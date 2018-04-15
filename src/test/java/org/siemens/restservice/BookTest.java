@@ -41,7 +41,7 @@ public void useSpec() {
 @Test
 public void createBookAndCheckExistence() {
 	BookDTO bookdto = new BookDTO()
-			.setId(91)
+			.setId(93)
 			.setTitle("Animal Farm")
 			.setAuthor("George Orwell")
 			.setPublicationDate("2012-06-16")
@@ -74,7 +74,7 @@ public void createBookAndVerifyExistence() {
 }
 private BookDTO createDummyBook() {
 	return new BookDTO()
-			.setId(92)
+			.setId(94)
 			.setTitle("Effective Java")
 			.setAuthor("Joshua Bloch")
 			.setPublicationDate("2001-04-13")
