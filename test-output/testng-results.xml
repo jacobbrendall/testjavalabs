@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="2095" started-at="2018-04-14T23:28:53Z" finished-at="2018-04-14T23:28:55Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="2095" started-at="2018-04-14T23:28:53Z" finished-at="2018-04-14T23:28:55Z">
+      <class name="org.siemens.restservice.BookTest">
+        <test-method status="PASS" signature="initSpec()[pri:0, instance:org.siemens.restservice.BookTest@5622fdf]" name="initSpec" is-config="true" duration-ms="392" started-at="2018-04-14T23:28:53Z" finished-at="2018-04-14T23:28:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSpec -->
+        <test-method status="PASS" signature="createBookAndCheckExistence()[pri:0, instance:org.siemens.restservice.BookTest@5622fdf]" name="createBookAndCheckExistence" duration-ms="1093" started-at="2018-04-14T23:28:53Z" finished-at="2018-04-14T23:28:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createBookAndCheckExistence -->
+        <test-method status="PASS" signature="createBookAndVerifyExistence()[pri:0, instance:org.siemens.restservice.BookTest@5622fdf]" name="createBookAndVerifyExistence" duration-ms="85" started-at="2018-04-14T23:28:54Z" finished-at="2018-04-14T23:28:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createBookAndVerifyExistence -->
+        <test-method status="PASS" signature="getAllBooksWithJsonPath()[pri:0, instance:org.siemens.restservice.BookTest@5622fdf]" name="getAllBooksWithJsonPath" duration-ms="386" started-at="2018-04-14T23:28:54Z" finished-at="2018-04-14T23:28:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAllBooksWithJsonPath -->
+        <test-method status="PASS" signature="useSpec()[pri:0, instance:org.siemens.restservice.BookTest@5622fdf]" name="useSpec" duration-ms="119" started-at="2018-04-14T23:28:54Z" finished-at="2018-04-14T23:28:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- useSpec -->
+      </class> <!-- org.siemens.restservice.BookTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
