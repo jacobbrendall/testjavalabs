@@ -6,7 +6,7 @@
       <class name="org.siemens.restservice.BookTest">
         <methods>
           <include name="initSpec"/>
-          <include name="createBookAndCheckExistence"/>
+          <include name="useSpec"/>
         </methods>
       </class> <!-- org.siemens.restservice.BookTest -->
     </classes>
