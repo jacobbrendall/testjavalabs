@@ -16,6 +16,13 @@ import java.util.Arrays;
 import java.util.List;
 
 
+//TODO create utils to de-serialize objects arrays with GSON or JACKSON
+// use FluTrackPojo
+//TODO create utils to de-serialize  { {}{}{} } rest body
+//use another API and POJO
+//TODO create utils to de-serialize hybrid { {[]}  {} } REST body
+//use another API and POJO
+
 public class RestUtils {
 
     RequestSpecification spec = new RequestSpecBuilder()
