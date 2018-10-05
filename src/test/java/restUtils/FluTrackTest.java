@@ -1,3 +1,4 @@
+/*
 package restUtils;
 
 import com.jayway.restassured.builder.RequestSpecBuilder;
@@ -39,3 +40,4 @@ public void useSpec() {
 	System.out.println(response.getList("user_name").get(0));
 }
 }
+*/

@@ -1,17 +1,9 @@
+/*
 package restUtils;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-import com.jayway.restassured.builder.RequestSpecBuilder;
-import com.jayway.restassured.filter.log.RequestLoggingFilter;
-import com.jayway.restassured.filter.log.ResponseLoggingFilter;
-import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.path.json.JsonPath;
-import com.jayway.restassured.specification.RequestSpecification;
 
-import static com.jayway.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.lessThan;
 
 public class BookTest {
 
@@ -110,3 +102,4 @@ public void useSpec() {
 //	assertThat(retrievedBooks.getList("author")).isNotEmpty();
 //}
 }
+*/
