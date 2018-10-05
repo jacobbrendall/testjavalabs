@@ -9,6 +9,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
+import org.testng.Assert;
 import pojos.FluTrackPojo;
 
 import java.util.Arrays;
@@ -42,8 +43,10 @@ public void executeRest() {
             .given()
             .when().get(uri)
             .then().extract().response().body().as(FluTrackPojo[].class));
-    String print = objListfluTrackPojo.get(1).getUserName();
-    System.out.println(print);
+
+    String retrievedUserName = objListfluTrackPojo.get(1).getUser_name();
+
+    Assert.assertEquals(retrievedUserName, "kristine_irene_");
 }
 
 
