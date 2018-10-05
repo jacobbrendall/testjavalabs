@@ -36,6 +36,11 @@ public class RestUtils {
         System.out.println(response.getList("user_name").get(0));
 
     }*/
+
+// object mapping test for REST response of Array types
+    // maps JSON arrays including multi objects into a Array
+    // and converts array to a list Object containing POJO attributes
+    // expected attribute is called thru calling a regular List Item
 @Test
 public void executeRest() {
     String uri = "http://api.flutrack.org/?limit=3";
