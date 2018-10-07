@@ -6,6 +6,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
@@ -28,26 +29,26 @@ public class RestUtils {
     RequestSpecification spec = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
-                .setBaseUri("http://api.flutrack.org/")
+                //.setBaseUri("https://api.sunrise-sunset.org/json")
                 .addFilter(new ResponseLoggingFilter())
                 .addFilter(new RequestLoggingFilter())
                 .build();
-/*
+
+//90.772104
     @Test
     public void useSpec() {
-        JsonPath response = RestAssured
+        RestAssured
                 .given().spec(spec)
-                .when().get("?limit=3")
-                .then().statusCode(200).extract().jsonPath();
+                .when().get("https://api.sunrise-sunset.org/json?lat=38.7&lng=-90.8")
+                .thenReturn().body().prettyPrint();
 
-        System.out.println(response.getList("user_name").get(0));
-
-    }*/
+    }
 
 // object mapping test for REST response of Array types
     // maps JSON arrays including multi objects into a Array
     // and converts array to a list Object containing POJO attributes
     // expected attribute is called thru calling a regular List Item
+
 @Test
 public void executeRest() {
     String uri = "http://api.flutrack.org/?limit=3";
@@ -56,7 +57,7 @@ public void executeRest() {
             .when().get(uri)
             .then().extract().response().body().as(FluTrackPojo[].class));
 
-    String retrievedUserName = objListfluTrackPojo.get(1).getUser_name();
+    String retrievedUserName = objListfluTrackPojo.get(0).getUser_name();
 
     Assert.assertEquals(retrievedUserName, "kristine_irene_");
 }
