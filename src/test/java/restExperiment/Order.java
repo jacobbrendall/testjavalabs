@@ -2,9 +2,9 @@ package restExperiment;
 
 public class Order implements Identifiable {
 
-    private Long id;
+    private long id;
     private String description;
-    private Long costInCents;
+    private long costInCents;
     private  boolean isComplete;
 
     @Override
