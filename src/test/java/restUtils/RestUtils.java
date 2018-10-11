@@ -1,6 +1,8 @@
 package restUtils;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -8,6 +10,7 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 import org.testng.Assert;
@@ -39,7 +42,7 @@ public class RestUtils {
     public void useSpec() {
         RestAssured
                 .given().spec(spec)
-                .when().get("https://api.sunrise-sunset.org/json?lat=38.7&lng=-90.8")
+                .when().get("http://api.flutrack.org/?limit=3")
                 .thenReturn().body().prettyPrint();
 
     }
@@ -62,5 +65,17 @@ public void executeRest() {
     Assert.assertEquals(retrievedUserName, "kristine_irene_");
 }
 
+
+
+
+/*-------------------*/
+public static String serializeObjectWithGson(Object obj) {
+        return new Gson().toJson(obj);
+
+}
+
+public static <T> T deserializeResponseWithGson(Response response, TypeToken typeToken) {
+        return new Gson().fromJson(response.asString(), typeToken.getType());
+}
 
 }
