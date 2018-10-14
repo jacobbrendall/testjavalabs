@@ -1,5 +1,6 @@
-package enums;
+package Domain.enums;
 
+//TODO to be updated
 public enum Query {
     REPID("SELECT FIRST_NAME FROM REPRESENTATIVES WHERE REP_ID = ?");
 

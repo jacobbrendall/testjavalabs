@@ -1,4 +1,4 @@
-package restUtils;
+package Utils.RestUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import pojos.DonorReference;
+import Domain.Pojos.DonorReference;
 
 
 import java.io.IOException;
@@ -38,8 +38,8 @@ public class DonorReferenceServiceClientTest {
 
         DonorReference retrievedDonorRef = donorClient.requestDonor("123");
 
-        assertThat(retrievedDonorRef.getId()).isEqualTo(expectedDonorRef.getId());
-        assertThat(retrievedDonorRef.getHref()).isEqualTo(expectedDonorRef.getHref());
+        Assertions.assertThat(retrievedDonorRef.getId()).isEqualTo(expectedDonorRef.getId());
+        Assertions.assertThat(retrievedDonorRef.getHref()).isEqualTo(expectedDonorRef.getHref());
         
         System.out.println(json);
     }

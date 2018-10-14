@@ -1,15 +1,16 @@
-package dbUtils;
+package tests;
 
 import helper.QueryHandlingHelper;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DbConnectionTest {
+// TODO updated
+public class DbTest {
     private QueryHandlingHelper helper = new QueryHandlingHelper();
 
     @Test
     public void getRep() {
-        assertEquals("abcd", helper.findRepById("1").getFirstName());
+        Assert.assertEquals("abcd", helper.findRepById("1").getFirstName());
     }
 }

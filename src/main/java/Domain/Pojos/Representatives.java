@@ -1,4 +1,4 @@
-package dbdomain;
+package Domain.Pojos;
 
 public class Representatives {
     private String repId;

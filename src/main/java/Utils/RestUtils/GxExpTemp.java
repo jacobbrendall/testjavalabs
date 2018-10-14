@@ -1,4 +1,4 @@
-package restUtils;
+package Utils.RestUtils;
 
 import io.restassured.RestAssured;
 import org.junit.Test;

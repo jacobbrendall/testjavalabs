@@ -1,4 +1,4 @@
-package restUtils;
+package Utils.RestUtils;
 
 
 import com.google.gson.Gson;
@@ -8,13 +8,11 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
-import io.restassured.http.Headers;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 import org.testng.Assert;
-import pojos.FluTrackPojo;
+import Domain.Pojos.FluTrackPojo;
 
 import java.util.Arrays;
 import java.util.List;

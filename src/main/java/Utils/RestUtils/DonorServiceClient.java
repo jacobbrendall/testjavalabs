@@ -1,9 +1,9 @@
-package restUtils;
+package Utils.RestUtils;
 import java.util.Arrays;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import pojos.DonorReference;
+import Domain.Pojos.DonorReference;
 
 public class DonorServiceClient {
 	   private final String donorServiceHost;
