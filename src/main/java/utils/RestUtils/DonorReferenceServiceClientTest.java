@@ -1,4 +1,4 @@
-package Utils.RestUtils;
+package utils.RestUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import Domain.Pojos.DonorReference;
+import domain.Pojos.DonorReference;
 
 
 import java.io.IOException;

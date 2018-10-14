@@ -1,4 +1,4 @@
-package Utils.DbUtils;
+package utils.DbUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

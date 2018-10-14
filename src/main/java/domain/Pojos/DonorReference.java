@@ -1,4 +1,4 @@
-package Domain.Pojos;
+package domain.Pojos;
 
 public class DonorReference {
 

@@ -1,4 +1,4 @@
-package Domain.enums;
+package domain.enums;
 
 //TODO to be updated
 public enum Query {

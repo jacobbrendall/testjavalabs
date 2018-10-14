@@ -1,4 +1,4 @@
-package Utils.RestUtils;
+package utils.RestUtils;
 
 
 import com.google.gson.Gson;
@@ -12,7 +12,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 import org.testng.Assert;
-import Domain.Pojos.FluTrackPojo;
+import domain.Pojos.FluTrackPojo;
 
 import java.util.Arrays;
 import java.util.List;
