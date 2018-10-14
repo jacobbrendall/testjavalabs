@@ -10,6 +10,6 @@ public class DbConnectionTest {
 
     @Test
     public void getRep() {
-        assertEquals("abcd", helper.findRepById("1").toString());
+        assertEquals("abcd", helper.findRepById("1").getFirstName());
     }
 }
