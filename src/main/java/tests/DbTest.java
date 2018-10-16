@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 public class DbTest {
 
     @Test
-
-    
+    public void jenkisnTest() {
+        System.out.println("jenkins github trigger");
+    }
 }
