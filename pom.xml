@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>com.siemens</groupId>
-    <artifactId>maven-restassured-jdbc</artifactId>
-    <version> 0.1</version>
+    <groupId>com.inss.automation</groupId>
+    <artifactId>test-java-labs</artifactId>
+    <version> 2.0.0</version>
 
 
     <properties>
@@ -30,15 +30,12 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -55,8 +52,6 @@
             <artifactId>ojdbc8</artifactId>
             <version>12.1.0</version>
         </dependency>
-
-      
     </dependencies>
 
 
