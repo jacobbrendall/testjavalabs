@@ -1,8 +1,5 @@
 package utils.RestUtils;
 
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -73,7 +70,7 @@ public static String serializeObjectWithGson(Object obj) {
 }
 
 public static <T> T deserializeResponseWithGson(Response response, TypeToken typeToken) {
-        return new Gson().fromJson(response.asString(), typeToken.getType());
+        return (T) new Gson().clone(response.asString(), typeToken.getType());
 }
 
 }
