@@ -9,8 +9,8 @@ import java.util.Properties;
 import java.lang.Class;
 
 public class Dao {
-        //TODO
-        //CREATE A Branch
+        //TODO: create a new branch
+
 
         String dbUri = "jdbc:oracle:thin:@//florida.csr9s71rdbw2.us-east-1.rds.amazonaws.com:1521/FLORIDA";
         String userName = "florida";
