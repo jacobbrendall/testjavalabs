@@ -31,6 +31,9 @@ public class Dao {
         return resultSet;
     }
 
+
+    // TODO Consider modifiying access modifier here
+    //TODO try to understand why we have extracted the getDbCOnnection method
     public Connection getDbConnection(String dbUri, String userName, String password) {
         Connection conn = null;
         try {
