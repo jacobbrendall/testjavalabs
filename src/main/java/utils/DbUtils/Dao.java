@@ -1,18 +1,8 @@
 package utils.DbUtils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Properties;
-import java.lang.Class;
+import java.sql.*;
 
-public class Dao {
-        //TODO: create a new branch
-
-
-
+public class Dao<userName, dbUri, password, conn> {
         String dbUri = "jdbc:oracle:thin:@//florida.csr9s71rdbw2.us-east-1.rds.amazonaws.com:1521/FLORIDA";
         String userName = "florida";
         String password = "miamiflorida";
@@ -27,21 +17,32 @@ public class Dao {
         Statement statement = null;
         ResultSet rs = null;
 
-           protected void executeQuery() throws SQLException {
-            conn = DriverManager.getConnection(dbUri, userName, password);
-            statement = conn.prepareStatement(queryCreate);
-            rs = statement.executeQuery(queryCreate);
-        }
-
-
-            // except this one read. Because when you read you get something back and  need to get that info
-            // call this method in DbTest
-            // and do some exception handling
-
+    public Dao() throws SQLException {
     }
 
+    protected void executeQuery() throws SQLException {
+
+            statement = conn.prepareStatement(queryCreate);
+            rs = statement.executeQuery(queryCreate);
+
+            statement = conn.prepareStatement(queryRead);
+            statement.executeQuery(queryRead);
+
+            statement = conn.prepareStatement(queryUpdate);
+            statement.executeQuery(queryUpdate);
+
+            statement = conn.prepareStatement(queryDelete);
+            statement.executeQuery(queryDelete);
+               }
+
+           public Connection DbConnection() throws SQLException {
+
+            if (isConnected()) {
+                return Connection.get(database);
+            } else{
+                try {
+                    conn = DriverManager.getConnection(dbUri, userName, password);
 
 
-
-
-
+    private void isConnected() {
+    }
