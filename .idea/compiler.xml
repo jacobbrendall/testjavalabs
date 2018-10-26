@@ -6,11 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="maven-restassured-jdbc" />
+        <module name="test-java-labs" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="maven-restassured-jdbc" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
