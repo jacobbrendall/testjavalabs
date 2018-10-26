@@ -5,43 +5,58 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
-import java.lang.Class;
+import java.util.List;
 
 public class Dao {
-        //TODO: create a new branch
 
+    String dbUri = "jdbc:oracle:thin:@//florida.csr9s71rdbw2.us-east-1.rds.amazonaws.com:1521/FLORIDA";
+    String userName = "florida";
+    String password = "miamiflorida";
 
-        String dbUri = "jdbc:oracle:thin:@//florida.csr9s71rdbw2.us-east-1.rds.amazonaws.com:1521/FLORIDA";
-        String userName = "florida";
-        String password = "miamiflorida";
+    // We need to make these variables final so they cannot be changed by someone else
+    final String queryCreate = "INSERT INTO ADDRESS (ID, STREETNAME, CITY, ZIPCODE, STATE)" +
+            "VALUES(7, '311 True St', 'Richmond', '54544', 'VA')";
+    final String queryRead = "SELECT * FROM ADDRESS WHERE ZIPCODE=54544";
+    final String queryUpdate = "UPDATE ADDRESS SET CITY = 'Miami', ZIPCODE='22222' WHERE ID='7'";
+    final String queryDelete = "DELETE FROM ADDRESS WHERE ID=7";
 
-        // We need to make these variables final so they cannot be changed by someone else
-        final String queryCreate = "INSERT INTO ADDRESS (ID, STREETNAME, CITY, ZIPCODE, STATE)" +
-                "VALUES(7, '311 True St', 'Richmond', '54544', 'VA')";
-        final String queryRead = "SELECT * FROM ADDRESS WHERE ZIPCODE=54544";
-        final String queryUpdate = "UPDATE ADDRESS SET CITY = 'Miami', ZIPCODE='22222' WHERE ID='7'";
-        final String queryDelete = "DELETE FROM ADDRESS WHERE ID=7";
+    public ResultSet executeQuery(String dbUri, String userName, String password, String sqlQuery) {
+        ResultSet resultSet = null;
+        try {
+            Statement statement = getDbConnection(dbUri, userName, password).prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery(sqlQuery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
 
-        // let us extract this and make a method
-        Connection conn = DriverManager.getConnection(dbUri, userName, password);
-        Statement statement = conn.prepareStatement(queryCreate);
+    public Connection getDbConnection(String dbUri, String userName, String password) {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(dbUri, userName, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return conn;
+    }
 
-        statement.executeQuery(queryCreate);
-        statement.executeQuery(queryUpdate);
-        statement.executeQuery(queryDelete);
+    //TODO for collaborators
+    // Add a method to get all records as a List for the given column
+    // Hint: this method will return List<String>
+    // ResultSet from an ORACLE database returns first line the name of the columns
+    // so you need to perform a rs.next() before retrieveing column content.
+    // In Test CLass print all records
+    //You will use queryRead
+    public List<String> getAllRecordsForColumn(String columnName) {
+        List<String> listOfColumns = null;
 
-        // do not leave blanks between lines
-        // as you will see these are all executequery methods
-        // you can extract  an execute sql query methods
-        Statement statement = conn.prepareStatement(queryRead);
-        ResultSet rs = statement.executeQuery(queryRead);
-        // except this one read. Because when you read you get something back and  need to get that info
-        // call this method in DbTest
-        // and do some exception handling
+        /*
+        YOUR CODE HERE
+        */
 
-
-        //TODO post this part is added after Ali's merge
+        return listOfColumns;
+    }
 }
 
 
