@@ -21,10 +21,16 @@ public class DbTest extends Dao {
     final String queryUpdate = "UPDATE ADDRESS SET CITY = 'Miami', ZIPCODE='22222' WHERE ID='7'";
     final String queryDelete = "DELETE FROM ADDRESS WHERE ID=7";
 
+    String dbUriGx = "jdbc:oracle:thin:@//experimentdbinstance.cn1e1hoy5jio.us-east-1.rds.amazonaws.com:1521/ORCL";
+    String userNameGx = "gxl";
+    String passwordGx = "Sb123456";
+    final String sql = "SELECT * FROM REPRESENTATIVES";
+
+
     @Test
     public void myTest() throws SQLException {
         Dao dao = new Dao();
-        List<String> retrievedStates = (List<String>) dao.getAllRecordsForColumn(dbUri, userName, password, queryRead,"ID");
+        List<String> retrievedStates = dao.getAllRecordsForColumn(dbUri, userName, password, queryRead, "ID");
         System.out.println(retrievedStates.toString());
     }
 }
