@@ -10,27 +10,16 @@ import java.util.List;
 // TODO updated
 public class DbTest extends Dao {
 
-    String dbUri = "jdbc:oracle:thin:@//florida.csr9s71rdbw2.us-east-1.rds.amazonaws.com:1521/FLORIDA";
-    String userName = "florida";
-    String password = "miamiflorida";
-
-    // We need to make these variables final so they cannot be changed by someone else
-    final String queryCreate = "INSERT INTO ADDRESS (ID, STREETNAME, CITY, ZIPCODE, STATE)" +
-            "VALUES(7, '311 True St', 'Richmond', '54544', 'VA')";
-    final String queryRead = "SELECT * FROM ADDRESS";
-    final String queryUpdate = "UPDATE ADDRESS SET CITY = 'Miami', ZIPCODE='22222' WHERE ID='7'";
-    final String queryDelete = "DELETE FROM ADDRESS WHERE ID=7";
-
-    String dbUriGx = "jdbc:oracle:thin:@//experimentdbinstance.cn1e1hoy5jio.us-east-1.rds.amazonaws.com:1521/ORCL";
+    String lastUri = "jdbc:oracle:thin:@//orcl.cn1e1hoy5jio.us-east-1.rds.amazonaws.com:1521/ORCL";
     String userNameGx = "gxl";
     String passwordGx = "Sb123456";
-    final String sql = "SELECT * FROM REPRESENTATIVES";
-
+    final String sql = "SELECT * FROM PERSONS";
 
     @Test
     public void myTest() throws SQLException {
         Dao dao = new Dao();
-        List<String> retrievedStates = dao.getAllRecordsForColumn(dbUri, userName, password, queryRead, "ID");
+        List<String> retrievedStates = dao.getAllRecordsForColumn(
+                lastUri, userNameGx, passwordGx, sql, "LASTNAME");
         System.out.println(retrievedStates.toString());
     }
 }
