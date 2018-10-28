@@ -33,7 +33,7 @@ public class RestUtils {
                 .build();
 
 //90.772104
-    @Test
+    //@Test
     public void useSpec() {
         RestAssured
                 .given().spec(spec)
@@ -47,7 +47,7 @@ public class RestUtils {
     // and converts array to a list Object containing POJO attributes
     // expected attribute is called thru calling a regular List Item
 
-@Test
+//@Test
 public void executeRest() {
     String uri = "http://api.flutrack.org/?limit=3";
     List<FluTrackPojo> objListfluTrackPojo = Arrays.asList(RestAssured
