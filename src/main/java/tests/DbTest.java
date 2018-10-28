@@ -7,9 +7,9 @@ import utils.DbUtils.Dao;
 import java.sql.SQLException;
 import java.util.List;
 
-// TODO updated
 public class DbTest extends Dao {
 
+    //TODO move these DBconnection params to config.properties file
     String lastUri = "jdbc:oracle:thin:@//orcl.cn1e1hoy5jio.us-east-1.rds.amazonaws.com:1521/ORCL";
     String userNameGx = "gxl";
     String passwordGx = "Sb123456";
