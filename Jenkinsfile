@@ -4,10 +4,9 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                sh '''
-                    mvn -version
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+                sh
+                    echo 'This is Initialize'
+
             }
         }
 
