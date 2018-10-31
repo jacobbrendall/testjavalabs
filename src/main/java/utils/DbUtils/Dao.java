@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Dao {
@@ -16,7 +17,7 @@ public class Dao {
     // We need to make these variables final so they cannot be changed by someone else
     final String queryCreate = "INSERT INTO ADDRESS (ID, STREETNAME, CITY, ZIPCODE, STATE)" +
             "VALUES(7, '311 True St', 'Richmond', '54544', 'VA')";
-    final String queryRead = "SELECT * FROM ADDRESS WHERE ZIPCODE=54544";
+    final String queryRead = "SELECT * FROM ADDRESS ";
     final String queryUpdate = "UPDATE ADDRESS SET CITY = 'Miami', ZIPCODE='22222' WHERE ID='7'";
     final String queryDelete = "DELETE FROM ADDRESS WHERE ID=7";
 
@@ -30,8 +31,6 @@ public class Dao {
         }
         return resultSet;
     }
-
-
     // TODO Consider modifiying access modifier here
     //TODO try to understand why we have extracted the getDbCOnnection method
     public Connection getDbConnection(String dbUri, String userName, String password) {
@@ -50,16 +49,18 @@ public class Dao {
     // ResultSet from an ORACLE database returns first line the name of the columns
     // so you need to perform a rs.next() before retrieveing column content.
     // In Test CLass print all records
-    //You will use queryRead
-    public List<String> getAllRecordsForColumn(String columnName) {
-        List<String> listOfColumns = null;
+    // You will use queryRead
+    public List<String> getAllRecordsForColumn(String columnName) throws SQLException {
+        List<String> listOfColumns = new ArrayList<String>();
 
-        /*
-        YOUR CODE HERE
-        */
+       ResultSet rs = executeQuery(dbUri, userName, password, queryRead);
 
-        return listOfColumns;
+       while (rs.next()){
+           listOfColumns.add(rs.getString(columnName));
+       }
+               return listOfColumns;
     }
 }
+
 
 
