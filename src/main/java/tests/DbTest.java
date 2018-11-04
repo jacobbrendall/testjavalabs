@@ -1,35 +1,41 @@
 package tests;
 
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import utils.DbUtils.Dao;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
+// TODO updated
 public class DbTest extends Dao {
     String queryRead;
-    @Test
+    static String dbUri;
+    static String userName;
+    static String password;
+    static Properties prop = new Properties();
 
-
-  
+    @BeforeClass
+    public static void init() throws IOException {
+        prop.load(new FileInputStream("config.properties"));
+        dbUri = prop.getProperty("dbUri");
+        userName = prop.getProperty("userName");
+        password = prop.getProperty("password");
+    }
     @Test
-    public void testToReadFromSql() throws Exception{
-        List<String> retrievedCities = getAllRecordsForColumn("CITY");
-        System.out.println(retrievedCities.toString());
+    public void testToReadFromSql() throws Exception {
+        List<String> retrievedCities = getAllRecordsForColumn(dbUri, userName, password, queryRead, "STATE");
+            System.out.println(retrievedCities.toString());
         }
 
-    //TODO move these DBconnection params to config.properties file
-    String lastUri = "jdbc:oracle:thin:@//orcl.cn1e1hoy5jio.us-east-1.rds.amazonaws.com:1521/ORCL";
-    String userNameGx = "gxl";
-    String passwordGx = "Sb123456";
-    final String sql = "SELECT * FROM PERSONS";
-
-
     @Test
-    public void myTest() throws SQLException {
-        List<String> retrievedStates = getAllRecordsForColumn(
-         "LASTNAME");
-        System.out.println(retrievedStates.toString());
-    }
-}
+    public void myTest () throws SQLException {
+        List<String> retrievedStates = getAllRecordsForColumn(dbUri, userName, password, queryRead, "STATE");
+            System.out.println(retrievedStates.toString());
+            }
+        }
