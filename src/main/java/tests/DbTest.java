@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
-// TODO updated
 public class DbTest extends Dao {
     String queryRead;
     static String dbUri;
@@ -27,15 +26,10 @@ public class DbTest extends Dao {
         userName = prop.getProperty("userName");
         password = prop.getProperty("password");
     }
-    @Test
-    public void testToReadFromSql() throws Exception {
-        List<String> retrievedCities = getAllRecordsForColumn(dbUri, userName, password, queryRead, "STATE");
-            System.out.println(retrievedCities.toString());
-        }
 
     @Test
-    public void myTest () throws SQLException {
+    public void myTest() throws SQLException {
         List<String> retrievedStates = getAllRecordsForColumn(dbUri, userName, password, queryRead, "STATE");
-            System.out.println(retrievedStates.toString());
-            }
-        }
+        System.out.println(retrievedStates.toString());
+    }
+}
