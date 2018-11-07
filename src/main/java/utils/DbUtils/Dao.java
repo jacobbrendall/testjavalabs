@@ -10,38 +10,36 @@ import java.util.List;
 
 public class Dao {
 
-    public ResultSet executeQuery(String dbUri, String userName, String password, String sqlQuery) {
+    private ResultSet executeQuery(String dbUri, String userName, String password, String sqlQuery) {
         ResultSet resultSet = null;
         try {
             Statement statement = getDbConnection(dbUri, userName, password).prepareStatement(sqlQuery);
             resultSet = statement.executeQuery(sqlQuery);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultSet;
     }
-
-    private Connection getDbConnection(String dbUri, String userName, String password) throws ClassNotFoundException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
+    private Connection getDbConnection(String dbUri, String userName, String password) throws SQLException {
         Connection conn = null;
-        try {
+        //try {
             conn = DriverManager.getConnection(dbUri, userName, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+       // } catch (SQLException e) {
+         //   e.printStackTrace();
+       // }
         return conn;
     }
+    public List<String> getAllRecordsForColumn(String dbUri, String userName, String password, String queryRead, String columnName) throws SQLException {
+        List<String> listOfColumns = new ArrayList<String>();
 
-    public List<String> getAllRecordsForColumn(String uri, String user, String pwd, String query, String columnLabel) throws SQLException {
-        List<String> listOfColumns = new ArrayList<>();
-        ResultSet rs = executeQuery(uri, user, pwd, query);
-        rs.next();
-        do {
-            listOfColumns.add(rs.getString(columnLabel));
-            rs.next();
-        } while (rs.next());
-        return listOfColumns;
+       ResultSet rs = executeQuery(dbUri, userName, password, queryRead);
+
+       while (rs.next()){
+           listOfColumns.add(rs.getString(columnName));
+       }
+               return listOfColumns;
     }
 }
+
 
 
