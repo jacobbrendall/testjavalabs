@@ -1,13 +1,23 @@
 package tests;
 
 import domain.pages.DirectoryPage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import java.sql.DriverManager;
 
 public class UiTest {
 
-    WebDriver driver;
+    public static void main(String[] args) {
 
-    DirectoryPage directoryPage = PageFactory.initElements(driver, DirectoryPage.class);
+        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+
+        DirectoryPage directoryPage = PageFactory.initElements(driver, DirectoryPage.class);
+        driver.get("https://www.amazon.com");
+
+    }
+
 
 }
