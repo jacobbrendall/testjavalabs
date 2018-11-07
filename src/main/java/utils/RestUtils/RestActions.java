@@ -1,3 +1,4 @@
+/*
 package utils.RestUtils;
 
 import io.restassured.RestAssured;
@@ -22,7 +23,7 @@ import java.util.List;
 //TODO create utils to de-serialize hybrid { {[]}  {} } REST body
 //use another API and POJO
 
-public class RestUtils {
+public class RestActions {
 
     RequestSpecification spec = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
@@ -33,7 +34,7 @@ public class RestUtils {
                 .build();
 
 //90.772104
-    @Test
+    //@Test
     public void useSpec() {
         RestAssured
                 .given().spec(spec)
@@ -47,7 +48,7 @@ public class RestUtils {
     // and converts array to a list Object containing POJO attributes
     // expected attribute is called thru calling a regular List Item
 
-@Test
+//@Test
 public void executeRest() {
     String uri = "http://api.flutrack.org/?limit=3";
     List<FluTrackPojo> objListfluTrackPojo = Arrays.asList(RestAssured
@@ -63,7 +64,9 @@ public void executeRest() {
 
 
 
-/*-------------------*/
+*/
+/*-------------------*//*
+
 public static String serializeObjectWithGson(Object obj) {
         return new Gson().toJson(obj);
 
@@ -74,3 +77,4 @@ public static <T> T deserializeResponseWithGson(Response response, TypeToken typ
 }
 
 }
+*/

@@ -1,5 +1,5 @@
 /*
-package utils.RestUtils;
+package utils.RestActions;
 
 import org.junit.Before;
 import org.junit.Test;
