@@ -1,20 +1,31 @@
 package domain.pages;
 
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 public class DirectoryPage extends HomePage {
+    private WebDriver driver;
 
-    WebDriver driver;
-
-    public DirectoryPage(WebDriver driver) {
-        this.driver;
+    public DirectoryPage (WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    @FindBy (xpath ="")
-    private WebElement state;
+    @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
+    private WebElement directoryOfRepresentativesText;
 
+    public void isDisplayedDirectoryOfRepresentativesText(){
+        directoryOfRepresentativesText.isDisplayed();
+    }
 
-    public String getState() {
-        return state.
+    @FindBy (linkText = "By State and District")
+    private WebElement listByStateandDistrict;
+
+    public void clickListByStateandDistrict(){
+        listByStateandDistrict.click();
     }
 
 

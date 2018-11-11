@@ -21,11 +21,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
 
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-
             </plugin>
         </plugins>
     </build>
@@ -54,6 +49,7 @@
             <artifactId>testng</artifactId>
             <version>6.14.2</version>
         </dependency>
+
 
         <!--dependency>
             <groupId>com.oracle</groupId>
@@ -102,6 +98,26 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>3.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.11.0</version>
         </dependency>
     </dependencies>
 
