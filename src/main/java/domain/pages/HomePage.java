@@ -12,7 +12,7 @@ public class HomePage {
         representativesLink.click();
     }
 
-
+    public void enterZipCode(String zipCode){}
 
 
 
