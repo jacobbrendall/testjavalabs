@@ -7,17 +7,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class GetAllRepresentativesNamesForSelected {
+public class GetPartyByRep {
+
     @Test
-    public void getAllRepsNamesForSelected(){
+    public void getPartyByReps(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.house.gov");
         HomePage hp = new PageFactory().initElements(driver, HomePage.class);
         hp.clickRepresentativesLink();
         DirectoryPage dp = new PageFactory().initElements(driver, DirectoryPage.class);
+        dp.isDisplayedDirectoryOfRepresentativesText();
         dp.clickListByStateandDistrict();
-        dp.getAllRepresentativeNamesForSelectedState("state-alaska");
-
+        dp.isAlabamaTextDisplayed();
+        System.out.println(dp.getPartyByRepresentative("Grijalva"));
     }
 }

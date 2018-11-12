@@ -19,10 +19,10 @@ public class UiTest {
     public void listByStateandDistrict() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         WebDriver driver = new ChromeDriver();
-        HomePage hp = new PageFactory().initElements(driver, HomePage.class);
-        DirectoryPage dp = new PageFactory().initElements(driver, DirectoryPage.class);
         driver.get("https://www.house.gov");
+        HomePage hp = new PageFactory().initElements(driver, HomePage.class);
         hp.clickRepresentativesLink();
+        DirectoryPage dp = new PageFactory().initElements(driver, DirectoryPage.class);
         dp.isDisplayedDirectoryOfRepresentativesText();
         dp.clickListByStateandDistrict();
         dp.isAlabamaTextDisplayed();

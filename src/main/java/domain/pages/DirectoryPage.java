@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -23,8 +21,8 @@ public class DirectoryPage {
     private WebElement listByStateandDistrict;
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
-    @FindBy (xpath = partyXpath)
-    private WebElement partyName;
+    //@FindBy (xpath = partyXpath)
+    //private WebElement partyName;
 
     public DirectoryPage (WebDriver driver){
         this.driver = driver;
@@ -44,9 +42,11 @@ public class DirectoryPage {
             System.out.println(stat.getText());
         }
     }
-    //public char getPartyByRepresentative(String representativeName){
-
-    //}
+    public String getPartyByRepresentative(String representativeName){
+        String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
+        String partyXpath = String.format(partyXpathByName, representativeName);
+        return driver.findElement(By.xpath(partyXpath)).getText();
+    }
     //public List<String> getAllStates(){}
 
 }
