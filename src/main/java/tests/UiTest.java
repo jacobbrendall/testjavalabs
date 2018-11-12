@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.sql.DriverManager;
-
 public class UiTest {
 
     public static void main(String[] args) {
@@ -22,6 +20,3 @@ public class UiTest {
 
 
 }
-
-
-https://www.house.gov
