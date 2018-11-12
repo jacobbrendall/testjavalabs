@@ -18,12 +18,14 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+
             </plugin>
         </plugins>
     </build>
@@ -58,11 +60,6 @@
             <artifactId>ora-jdbc</artifactId>
             <version></version>
         </dependency-->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.0</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-site-renderer</artifactId>
@@ -106,12 +103,6 @@
             <artifactId>rest-assured</artifactId>
             <version>3.1.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.14.0</version>
-        </dependency>
-
     </dependencies>
 
     <repositories>
@@ -120,8 +111,6 @@
             <url>https://mymavenrepo.com/repo/BkXEwuPrXTDBWcHzMfn8</url>
         </repository>
     </repositories>
-
-
 
 <distributionManagement>
     <repository>
