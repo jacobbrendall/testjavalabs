@@ -17,7 +17,7 @@ public class GetAllRepresentativesNamesForSelected {
         hp.clickRepresentativesLink();
         DirectoryPage dp = new PageFactory().initElements(driver, DirectoryPage.class);
         dp.clickListByStateandDistrict();
-        dp.getAllRepresentativeNamesForSelectedState("state-alaska");
+        System.out.println(dp.getAllRepresentativeNamesForSelectedState("state-alabama").toString());
 
     }
 }
