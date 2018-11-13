@@ -4,6 +4,7 @@ package domain.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class DirectoryPage {
     private WebElement listByStateandDistrict;
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
+    @FindAll({@FindBy(xpath = "//caption[starts-with(@id,'state')]")})
+    private List<WebElement> allStates;
 
     public DirectoryPage (WebDriver driver){
         this.driver = driver;
@@ -50,6 +53,11 @@ public class DirectoryPage {
         String party = driver.findElement(By.xpath(partyXpath)).getText();
         return party.charAt(0);
     }
-    //public List<String> getAllStates(){}
-
+    public List<String> getAllStates() {
+        List<String> allStatesArray = new ArrayList<String>();
+        for (WebElement allState:allStates){
+            allStatesArray.add(allState.getText());
+        }
+        return allStatesArray;
+    }
 }
