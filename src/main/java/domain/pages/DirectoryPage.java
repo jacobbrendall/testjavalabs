@@ -15,16 +15,21 @@ public class DirectoryPage {
     public String stateTextXpath = "//*[@id='%s']/..//td[2]";
     public final String partyXpath = "(//a[contains(text(),'Byrne, Bradley')])[1]/../following-sibling::td[1]";
     public List<WebElement> states;
+    String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
 
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
     private WebElement directoryOfRepresentativesText;
+
     @FindBy (linkText = "By State and District")
     private WebElement listByStateandDistrict;
+
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
+
     @FindAll({@FindBy(xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
+
 
     public DirectoryPage (WebDriver driver){
         this.driver = driver;
@@ -47,12 +52,14 @@ public class DirectoryPage {
         }
         return representativeNames;
     }
-    public char getPartyByRepresentative(String representativeName){
-        String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
-        String partyXpath = String.format(partyXpathByName, representativeName);
-        String party = driver.findElement(By.xpath(partyXpath)).getText();
-        return party.charAt(0);
+
+    public String getPartyXpath(String xpathParty, String representativeName){
+        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText();
     }
+    public char getPartyByRepresentative(String representativeName){
+        return getPartyXpath(partyXpathByName, representativeName).charAt(0);
+    }
+
     public List<String> getAllStates() {
         List<String> allStatesArray = new ArrayList<String>();
         for (WebElement allState:allStates){

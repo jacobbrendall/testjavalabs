@@ -9,5 +9,8 @@
         <module name="test-java-labs" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test-java-labs" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

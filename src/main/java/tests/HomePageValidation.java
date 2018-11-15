@@ -8,13 +8,5 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePageValidation {
 
-    @Test
-    public void verifyHomePageLogo(){
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-        driver.get("https://www.house.gov");
-        System.out.println(homePage.isHomePageLogoPresent());
-        driver.close();
-    }
+
 }
