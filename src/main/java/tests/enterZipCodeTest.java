@@ -17,7 +17,7 @@ public class enterZipCodeTest {
     WebDriver driver = new ChromeDriver();
     driver.get("https://www.house.gov");
     HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-    System.out.println(homePage.enterZipCode("23455"));
+    homePage.enterZipCode("23455");
     driver.quit();
 }
     }
