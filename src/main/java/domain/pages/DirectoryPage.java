@@ -22,7 +22,7 @@ public class DirectoryPage {
     private WebElement directoryOfRepresentativesText;
 
     @FindBy (linkText = "By State and District")
-    private WebElement listByStateandDistrict;
+    private WebElement listByStateandDistrictButton;
 
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
@@ -39,7 +39,7 @@ public class DirectoryPage {
         return directoryOfRepresentativesText.isDisplayed();
     }
     public void clickListByStateandDistrict(){
-        listByStateandDistrict.click();
+        listByStateandDistrictButton.click();
     }
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
 
