@@ -25,7 +25,7 @@ public class HomePage {
     @FindBy (xpath = "//img[@class='repPhoto'] ")
     private WebElement representativePhoto;
 
-    @FindBy (xpath = "//div[@name='RepeatReps'")
+    @FindBy (xpath = "//div[@name='RepeatReps']")
     private WebElement atLeastTwoRepresentativesFound;
 
     @FindBy (xpath = "//input[@value='FIND YOUR REP BY ADDRESS']")
@@ -35,9 +35,21 @@ public class HomePage {
         representativesLink.click();
     }
 
-    public void enterZipCode(String zipCode) {
+    public String enterZipCode(String zipCode) {
+        Pattern pattern =Pattern.compile(regex);
+        Matcher matcher =pattern.matcher(zipCode);
         inputZipCode.sendKeys(zipCode);
         lookUpZipCodeButton.click();
+        if (matcher.matches()){
+            if(atLeastTwoRepresentativesFound.isDisplayed()) {
+                result = findYourRepByAddressButton.isDisplayed();
+            } else if(representativePhoto.isDisplayed())
+            result = representativePhoto.isDisplayed();
+        }
+        else {
+            result = invalidZipCodeText.isDisplayed();
+        }
+        return result.toString();
     }
 
 }

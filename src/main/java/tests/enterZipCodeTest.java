@@ -12,20 +12,13 @@ import org.openqa.selenium.support.PageFactory;
 public class enterZipCodeTest {
 
     @Test
-            public void isZipCodeCorrect()
-    System.()
-    Pattern pattern =Pattern.compile(regex);
-    Matcher matcher =pattern.matcher(zipCode);
-    if (matcher.matches()){
-        if(atLeastTwoRepresentativesFound.isDisplayed()) {
-            result = findYourRepByAddressButton.isDisplayed();
-        }
-        result = representativePhoto.isDisplayed();
-    }
-    else {
-        result = invalidZipCodeText.isDisplayed();
-    }
-    return result.toString();
+    public void isZipCodeCorrect(){
+    System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+    WebDriver driver = new ChromeDriver();
+    driver.get("https://www.house.gov");
+    HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+    System.out.println(homePage.enterZipCode("23455"));
+    driver.quit();
 }
     }
-}
+
