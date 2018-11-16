@@ -11,30 +11,30 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UiTestTemp {
 
-    @Test
-    public void representativeLinkShouldWork() {
+    //*@Test
+    //public void representativeLinkShouldWork() {
 
         //TODO use IJ system set and get property
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+        //System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+        //WebDriver driver = new ChromeDriver();
+        //HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
 
-        driver.get("https://www.house.gov");
-        System.out.println(homePage.isHomePageZipCodeInputPresent());
-        homePage.clickRepresentativesLink();
-    }
+        //driver.get("https://www.house.gov");
+        //System.out.println(homePage.isHomePageZipCodeInputPresent());
+        //homePage.clickRepresentativesLink();
+    //}
 
-    @Test
-    public void leadershipLinkShouldWork() {
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-        LeadershipPage leadershipPage = new PageFactory().initElements(driver, LeadershipPage.class);
+    //@Test
+    //public void leadershipLinkShouldWork() {
+      //  System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
+       // WebDriver driver = new ChromeDriver();
+        //HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+        //LeadershipPage leadershipPage = new PageFactory().initElements(driver, LeadershipPage.class);
 
-        driver.get("https://www.house.gov");
-        homePage.clickLeaderShipLink();
+        //driver.get("https://www.house.gov");
+        //homePage.clickLeaderShipLink();
 
-        Assert.assertTrue(leadershipPage.isLeadershipTitlePresent());
-    }
+        //Assert.assertTrue(leadershipPage.isLeadershipTitlePresent());
+   // }
 
 }
