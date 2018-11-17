@@ -1,12 +1,11 @@
-package tests;
+package tests.uiTests;
 
 import domain.pages.HomePage;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import tests.uiTests.UITestBaseClass;
 
-public class HomePageValidationTest extends UITestBaseClass{
+public class HomePageValidationTest extends UITestBaseClass {
 
     @Test
     public void homePageValidation(){

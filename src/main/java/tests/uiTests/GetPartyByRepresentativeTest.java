@@ -1,22 +1,23 @@
-package tests;
+package tests.uiTests;
 
 import domain.pages.DirectoryPage;
 import domain.pages.HomePage;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import tests.uiTests.UITestBaseClass;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetAllRepresentativesNamesForSelectedTest extends UITestBaseClass {
-    String result = "[Byrne, Bradley, Roby, Martha, Rogers, Mike, Aderholt, Robert, Brooks, Mo, Palmer, Gary, Sewell, Terri A.]";
+public class GetPartyByRepresentativeTest extends UITestBaseClass {
+
     @Test
-    public void getAllRepsNamesForSelected(){
+    public void getPartyByReps(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
+        directoryPage.isDisplayedDirectoryOfRepresentativesText();
         directoryPage.clickListByStateandDistrict();
-        assertEquals(result, directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").toString());
+        directoryPage.isAlabamaTextDisplayed();
+        assertEquals("D", directoryPage.getPartyByRepresentative("Grijalva"));
     }
 }
