@@ -57,8 +57,8 @@ public class DirectoryPage {
         return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText();
     }
 
-    public char getPartyByRepresentative(String representativeName){
-        return getPartyXpath(partyXpathByName, representativeName).charAt(0);
+    public String getPartyByRepresentative(String representativeName){
+        return getPartyXpath(partyXpathByName, representativeName);
     }
 
     public List<String> getAllStates() {
