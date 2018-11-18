@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DirectoryPage {
     private WebDriver driver;
@@ -16,6 +18,7 @@ public class DirectoryPage {
     public final String partyXpath = "(//a[contains(text(),'Byrne, Bradley')])[1]/../following-sibling::td[1]";
     public List<WebElement> states;
     String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
+    String rowInfoXpath = "//caption[@id='state-alabama']/../tbody/tr/td";
 
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
@@ -29,6 +32,7 @@ public class DirectoryPage {
 
     @FindAll({@FindBy(xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
+
 
 
     public DirectoryPage (WebDriver driver){
@@ -67,5 +71,24 @@ public class DirectoryPage {
             allStatesArray.add(allState.getText());
         }
         return allStatesArray;
+    }
+
+    public List<WebElement> allRowInfoForSelectedState(String state){
+        List<WebElement> rows = driver.findElements(By.xpath(String.format(rowInfoXpath, state)));
+        return rows;
+    }
+
+    public void checkFormatInTheRowsForSelectedState(String state){
+        int count = allRowInfoForSelectedState(state).size();
+        String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+
+        List<WebElement> phones = allRowInfoForSelectedState("state-alabama");
+        for (WebElement phone:phones) {
+            Matcher matcher = pattern.matcher(phone.getText());
+            if (matcher.matches()){
+                System.out.println(phone.getText());
+            }
+        }
     }
 }
