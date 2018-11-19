@@ -19,6 +19,7 @@ public class DirectoryPage {
     public List<WebElement> states;
     String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
     String rowInfoXpath = "//caption[@id='state-alabama']/../tbody/tr/td";
+    String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
 
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
@@ -78,17 +79,15 @@ public class DirectoryPage {
         return rows;
     }
 
-    public void checkFormatInTheRowsForSelectedState(String state){
-        int count = allRowInfoForSelectedState(state).size();
-        String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
+    public Boolean checkFormatInTheRowsForSelectedState(String state){
         Pattern pattern = Pattern.compile(regex);
-
-        List<WebElement> phones = allRowInfoForSelectedState("state-alabama");
-        for (WebElement phone:phones) {
+        Boolean result = false;
+        for (WebElement phone:allRowInfoForSelectedState("state-alabama")) {
             Matcher matcher = pattern.matcher(phone.getText());
             if (matcher.matches()){
-                System.out.println(phone.getText());
+                result = phone.isDisplayed();
             }
         }
+        return result;
     }
 }
