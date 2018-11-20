@@ -6,11 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class DirectoryPage {
     private WebDriver driver;
@@ -31,7 +33,7 @@ public class DirectoryPage {
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
 
-    @FindAll({@FindBy(xpath = "//caption[starts-with(@id,'state')]")})
+    @FindBys({@FindBy ( xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
 
 
@@ -58,20 +60,23 @@ public class DirectoryPage {
         return representativeNames;
     }
 
-    public String getPartyXpath(String xpathParty, String representativeName){
-        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText();
+    public String getParty(String xpathParty, String representativeName){
+        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText().trim();
     }
 
     public String getPartyByRepresentative(String representativeName){
-        return getPartyXpath(partyXpathByName, representativeName);
+        return getParty(partyXpathByName, representativeName);
     }
 
-    public List<String> getAllStates() {
+    public List<String> getAllStatesWithA() {
         List<String> allStatesArray = new ArrayList<String>();
         for (WebElement allState:allStates){
             allStatesArray.add(allState.getText());
         }
-        return allStatesArray;
+        //List <String> startingWithAStates = allStatesArray.stream().filter(s->s.startsWith("A")).collect(Collectors.toList());
+        //return startingWithAStates;
+        List <String> sortedStates = allStatesArray.stream().sorted().collect(Collectors.toList());
+        return sortedStates;
     }
 
     public List<WebElement> allRowInfoForSelectedState(String state){
