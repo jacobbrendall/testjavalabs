@@ -7,11 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetAllRepresentativesNamesForSelectedTest extends UITestBaseClass {
+public class ShouldGetAllRepresentativesNamesForSelectedTest extends UITestBaseClass {
     String result = "[Byrne, Bradley, Roby, Martha, Rogers, Mike, Aderholt, Robert, Brooks, Mo, Palmer, Gary, Sewell, Terri A.]";
 
     /**
-     * Check if landed homepage
      * Click representatives link
      * List by state and district
      * call getAllRepresentativeNamesForSelectedState method from directory page
@@ -23,7 +22,6 @@ public class GetAllRepresentativesNamesForSelectedTest extends UITestBaseClass {
     @Test
     public void areAllRepsNamesForSelectedStateDisplayed(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-        homePage.isHomePageLogoDisplayed();
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.clickListByStateandDistrict();

@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 import tests.uiTests.UITestBaseClass;
 
-public class HomePageValidationTest extends UITestBaseClass {
+public class ShouldDisplayHomePageLogoTest extends UITestBaseClass {
     /**
      * Validate if landed on homepage
      */

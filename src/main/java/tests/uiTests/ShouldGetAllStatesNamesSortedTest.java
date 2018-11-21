@@ -9,11 +9,10 @@ import tests.uiTests.UITestBaseClass;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class GetAllStatesTest extends UITestBaseClass {
+public class ShouldGetAllStatesNamesSortedTest extends UITestBaseClass {
 
     String allstates = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
     /**
-     * Land on homepage.
      * Click representatives link.
      * List by state and district.
      * Call for get all states sorted method from directory page.
@@ -23,12 +22,9 @@ public class GetAllStatesTest extends UITestBaseClass {
     @Test
     public void areAllStatesSorted() {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-        homePage.isHomePageLogoDisplayed();
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        directoryPage.isDisplayedDirectoryOfRepresentativesText();
         directoryPage.clickListByStateandDistrict();
-        directoryPage.isAlabamaTextDisplayed();
         assertEquals (allstates, directoryPage.getAllStatesSorted().toString());
     }
 }

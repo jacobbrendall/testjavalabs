@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class EnterZipCodeTest extends UITestBaseClass {
+public class ShouldCheckResultsWhenEnteredZipCodeTest extends UITestBaseClass {
     /**
      * Call for enterZipCode method from Homepage.
      * Put zipcode as an argument.
