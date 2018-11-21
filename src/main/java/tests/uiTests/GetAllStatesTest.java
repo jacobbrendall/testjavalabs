@@ -12,15 +12,23 @@ import static junit.framework.TestCase.assertTrue;
 public class GetAllStatesTest extends UITestBaseClass {
 
     String allstates = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
+    /**
+     * Land on homepage.
+     * Click representatives link.
+     * List by state and district.
+     * Call for get all states sorted method from directory page.
+     * Create a string variable for expected result with respective values.
+     * Check if expected and actual results match.
+     */
     @Test
-    public void getAllStatesOfReps() {
+    public void areAllStatesSorted() {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+        homePage.isHomePageLogoDisplayed();
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.isDisplayedDirectoryOfRepresentativesText();
         directoryPage.clickListByStateandDistrict();
         directoryPage.isAlabamaTextDisplayed();
-
-        assertEquals (allstates, directoryPage.getAllStatesWithA().toString());
+        assertEquals (allstates, directoryPage.getAllStatesSorted().toString());
     }
 }

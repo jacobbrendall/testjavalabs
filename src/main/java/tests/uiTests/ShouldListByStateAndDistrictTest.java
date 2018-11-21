@@ -10,10 +10,16 @@ import tests.uiTests.UITestBaseClass;
 
 public class ShouldListByStateAndDistrictTest extends UITestBaseClass {
 
-
+    /**
+     * Check if landed on homepage.
+     * Go to representatives.
+     * List by state and district.
+     * Check if Alabama is the first state to validate listed by state and district.
+     */
     @Test
-    public void listByStateandDistrict() {
+    public void isListedByStateAndDistrict() {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+        homePage.isHomePageLogoDisplayed();
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.isDisplayedDirectoryOfRepresentativesText();

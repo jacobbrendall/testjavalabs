@@ -7,15 +7,21 @@ import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 
 public class CheckFormatForSelectedStatesTest extends UITestBaseClass{
-    /* Should test whether all elements matches with regex are returned correctly*/
+    /**
+     * Create a desired format in "checkFormatInTheRowsForSelectedState" method in HomePage.
+     * Select a state as an argument for the same method in the form "state-.....".
+     * Check if you have landed on Homepage.
+     * Click representatives link.
+     * Check if all values in respective columns match with regex format.
+     * return boolean
+     */
     @Test
-    public void shouldCheckDesiredFormat(){
+    public void isMatchWithDesiredFormat(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         homePage.isHomePageLogoDisplayed();
         homePage.clickRepresentativesLink();
         directoryPage.isDisplayedDirectoryOfRepresentativesText();
-        directoryPage.checkFormatInTheRowsForSelectedState("state-alabama");
         Assert.assertTrue(directoryPage.checkFormatInTheRowsForSelectedState("state-alabama"));
     }
 }

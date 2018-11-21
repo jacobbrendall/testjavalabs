@@ -7,9 +7,16 @@ import org.openqa.selenium.support.PageFactory;
 import static junit.framework.TestCase.assertTrue;
 
 public class EnterZipCodeTest extends UITestBaseClass {
-    /*Checks whether "find your representative button" appears when there is more than one representative*/
+    /**
+     * Call for enterZipCode method from Homepage.
+     * Put zipcode as an argument.
+     * Check one of the expected result:
+     * isRepPhotoDisplayed or
+     * IsAtleastTwoRepresentativesFound
+     * isFindYourRepButtonPresent.
+     */
     @Test
-    public void isZipCodeCorrect(){
+    public void isFindYourRepButtonAppearAfterEnteringZipCode(){
     HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
     homePage.enterZipCodeAndSubmit("92656");
     assert homePage.isFindYourRepButtonPresent();

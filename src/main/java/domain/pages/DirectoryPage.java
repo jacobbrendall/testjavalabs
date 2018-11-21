@@ -68,7 +68,7 @@ public class DirectoryPage {
         return getParty(partyXpathByName, representativeName);
     }
 
-    public List<String> getAllStatesWithA() {
+    public List<String> getAllStatesSorted() {
         List<String> allStatesArray = new ArrayList<String>();
         for (WebElement allState:allStates){
             allStatesArray.add(allState.getText());

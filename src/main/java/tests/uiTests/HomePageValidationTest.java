@@ -6,9 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 import tests.uiTests.UITestBaseClass;
 
 public class HomePageValidationTest extends UITestBaseClass {
-
+    /**
+     * Validate if landed on homepage
+     */
     @Test
-    public void homePageValidation(){
+    public void isHomePageLogoDisplayed(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         assert homePage.isHomePageLogoDisplayed();
     }
