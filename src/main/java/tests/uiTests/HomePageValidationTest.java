@@ -10,6 +10,6 @@ public class HomePageValidationTest extends UITestBaseClass {
     @Test
     public void homePageValidation(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-        assert homePage.validateHomePage();
+        assert homePage.isHomePageLogoDisplayed();
     }
 }

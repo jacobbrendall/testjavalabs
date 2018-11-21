@@ -24,11 +24,11 @@ public class HomePage {
     @FindBy(xpath = "//input[@id='header-find-rep-zip-code']")
     private WebElement inputZipCode;
 
-    @FindBy(xpath = "//*[contains(text(), 'You submitted an invalid Zip Code')] ")
+    @FindBy(xpath = "//*[contains(text(), 'You submitted an invalid Zip Code')]")
     private WebElement invalidZipCodeText;
 
-    @FindBy(xpath = "//img[@class='repPhoto'] ")
-    private WebElement representativePhoto;
+    @FindBy(xpath = "//img[@class='repPhoto']")
+    private WebElement imageRepresentative;
 
     @FindBy(xpath = "(//img[@class='repPhoto'])[2]")
     private WebElement atLeastTwoRepresentativesFound;
@@ -40,25 +40,25 @@ public class HomePage {
         representativesLink.click();
     }
 
-    public void enterZipCode(String zipCode) {
+    public void enterZipCodeAndSubmit(String zipCode) {
         inputZipCode.clear();
         inputZipCode.sendKeys(zipCode);
         lookUpZipCodeButton.click();
     }
 
-    public boolean representativephoto(){
-        return representativePhoto.isDisplayed();
+    public boolean isRepPhotoDisplayed(){
+        return imageRepresentative.isDisplayed();
     }
 
-    public boolean atleastTwoRepresentativesFound() {
+    public boolean IsAtleastTwoRepresentativesFound() {
         return atLeastTwoRepresentativesFound.isDisplayed();
     }
 
-    public boolean findyourRepByAddressButton(){
+    public boolean isFindYourRepButtonPresent(){
          return findYourRepByAddressButton.isDisplayed();
     }
 
-    public boolean validateHomePage(){
+    public boolean isHomePageLogoDisplayed(){
        return homePageLogo.isDisplayed();
     }
 }

@@ -84,10 +84,10 @@ public class DirectoryPage {
         return rows;
     }
 
-    public Boolean checkFormatInTheRowsForSelectedState(String state){
+    public boolean checkFormatInTheRowsForSelectedState(String state){
         Pattern pattern = Pattern.compile(regex);
         Boolean result = false;
-        for (WebElement phone:allRowInfoForSelectedState("state-alabama")) {
+        for (WebElement phone:allRowInfoForSelectedState(state)) {
             Matcher matcher = pattern.matcher(phone.getText());
             if (matcher.matches()){
                 result = phone.isDisplayed();
