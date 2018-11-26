@@ -1,6 +1,5 @@
 package tests;
 
-import domain.pages.HomePage;
 import domain.pages.RepresentativesPage;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -18,6 +17,6 @@ public class RepresentativesPageValidation {
 
         driver.get("https://www.house.gov");
         driver.findElement(By.linkText("Representatives")).click();
-        System.out.println(RepresentativesPage.isRepresentativesPagePresent());
+        System.out.println(RepresentativesPage.isRepresentativesPageStateNameDisplayed());
     }
 }

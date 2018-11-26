@@ -1,11 +1,29 @@
 package domain.pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage {
 
-    public boolean isHomePageLogoPresent(){
-       boolean verificationPoint = isHomePageLogoPresent();
-       return verificationPoint;
+        WebDriver driver;
+
+        @FindBy (xpath = "//input[@id='header-find-rep-zip-code']")
+        private WebElement homePageZipCodeInput;
+
+        @FindBy (xpath = "(//a[href='/representatives'])[1]")
+        private WebElement representativesLink;
+
+        public HomePage(WebDriver driver) {
+            this.driver = driver;
+        }
+
+        public boolean isHomePageZipCodeInputPresent(){
+            return homePageZipCodeInput.isDisplayed();
+        }
+
+        public void clickRepresentativesLink(){
+        representativesLink.click();
+        }
     }
-}
+
