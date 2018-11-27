@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UITestBaseClass {
 
-    WebDriver driver;
+    public WebDriver driver;
 
     @Before
     public void SystemSetUp(){
