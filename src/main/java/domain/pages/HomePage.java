@@ -22,7 +22,7 @@ public class HomePage {
             return homePageZipCodeInput.isDisplayed();
         }
 
-        public void clickRepresentativesLink(){
+        public static void clickRepresentativesLink(){
         representativesLink.click();
         }
     }

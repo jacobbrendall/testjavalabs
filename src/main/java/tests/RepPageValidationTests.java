@@ -1,22 +1,21 @@
 package tests;
 
+import domain.pages.HomePage;
 import domain.pages.RepresentativesPage;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class RepresentativesPageValidation {
+public class RepPageValidationTests {
 
     @Test
-    public void verifyRepresentativesPageLogo(){
-        System.setProperty("WebDriver.chrome.driver", "resources/chromedriver");
+    public void repPageLogoShouldAppear(){
+        System.setProperty("WebDriver.chrome.driver", "resources/chrome-driver");
         WebDriver driver = new ChromeDriver();
         RepresentativesPage representativesPage = new PageFactory().initElements(driver, RepresentativesPage.class);
 
-        driver.get("https://www.house.gov");
-        driver.findElement(By.linkText("Representatives")).click();
+        HomePage.clickRepresentativesLink();
         System.out.println(RepresentativesPage.isRepresentativesPageStateNameDisplayed());
     }
 }
