@@ -11,8 +11,11 @@ public class HomePage {
         @FindBy (xpath = "//input[@id='header-find-rep-zip-code']")
         private static WebElement homePageZipCodeInput;
 
-        @FindBy (xpath = "(//a[href='/representatives'])[1]")
+        @FindBy (xpath = "(//a[href='/representatives'])")
         private static WebElement representativesLink;
+
+        @FindBy (xpath = "(//a[href='/committees'])")
+        private static WebElement committeesLink;
 
         public HomePage(WebDriver driver) {
             this.driver = driver;
@@ -25,5 +28,10 @@ public class HomePage {
         public static void clickRepresentativesLink(){
             representativesLink.click();
         }
+
+        public static void clickCommitteesLink(){
+            committeesLink.click();
+
+    }
     }
 
