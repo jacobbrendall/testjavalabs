@@ -1,12 +1,13 @@
 package tests.uiTests;
 
 import domain.pages.HomePage;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class ShouldCheckResultsWhenEnteredZipCodeTest extends UITestBaseClass {
+public class ZipCodeTests extends UITestBase {
     /**
      * Call for enterZipCode method from Homepage.
      * Put zipcode as an argument.
@@ -16,10 +17,10 @@ public class ShouldCheckResultsWhenEnteredZipCodeTest extends UITestBaseClass {
      * isFindYourRepButtonPresent.
      */
     @Test
-    public void isFindYourRepButtonAppearAfterEnteringZipCode(){
-    HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+    public void FindYourRepButtonShouldAppearAfterEnteringZipCode(){
+        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
     homePage.enterZipCodeAndSubmit("92656");
-    assert homePage.isFindYourRepButtonPresent();
+        Assert.assertTrue(homePage.isFindYourRepButtonPresent());
     }
 }
 

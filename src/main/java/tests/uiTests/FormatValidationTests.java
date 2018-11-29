@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShouldCheckIfAnyElementMatchWithFormatForSelectedStatesTest extends UITestBaseClass{
+public class FormatValidationTests extends UITestBase {
     /**
      * Create a desired format in "checkFormatInTheRowsForSelectedState" method in HomePage.
      * Select a state as an argument for the same method in the form "state-.....".
@@ -14,10 +14,10 @@ public class ShouldCheckIfAnyElementMatchWithFormatForSelectedStatesTest extends
      * return boolean
      */
     @Test
-    public void isMatchWithDesiredFormat(){
+    public void repTableRowContentShouldMatchFormat(){
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        Assert.assertTrue(directoryPage.checkFormatInTheRowsForSelectedState("state-alabama"));
+        Assert.assertTrue("true", directoryPage.checkPhoneFormatForSelectedState("state-alabama"));
     }
 }

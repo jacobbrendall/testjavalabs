@@ -2,14 +2,14 @@ package tests.uiTests;
 
 import domain.pages.DirectoryPage;
 import domain.pages.HomePage;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
-import tests.uiTests.UITestBaseClass;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class ShouldGetAllStatesNamesSortedTest extends UITestBaseClass {
+public class StatesTests extends UITestBase {
 
     String allstates = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
     /**
@@ -20,11 +20,11 @@ public class ShouldGetAllStatesNamesSortedTest extends UITestBaseClass {
      * Check if expected and actual results match.
      */
     @Test
-    public void areAllStatesSorted() {
+    public void AllStatesShouldSorted() {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        directoryPage.clickListByStateandDistrict();
-        assertEquals (allstates, directoryPage.getAllStatesSorted().toString());
+        directoryPage.clickListByStateAndDistrict();
+        Assert.assertEquals (allstates, directoryPage.getSortedStates().toString());
     }
 }

@@ -24,14 +24,14 @@ public class HomePage {
     @FindBy(xpath = "//input[@id='header-find-rep-zip-code']")
     private WebElement inputZipCode;
 
-    @FindBy(xpath = "//*[contains(text(), 'You submitted an invalid Zip Code')]")
+    @FindBy(xpath = "//form[contains(text(), 'Enter a zip code:')]")
     private WebElement invalidZipCodeText;
 
     @FindBy(xpath = "//img[@class='repPhoto']")
     private WebElement imageRepresentative;
 
     @FindBy(xpath = "(//img[@class='repPhoto'])[2]")
-    private WebElement atLeastTwoRepresentativesFound;
+    private WebElement moreThanOneRepresentativeFound;
 
     @FindBy(xpath = "//input[@value='FIND YOUR REP BY ADDRESS']")
     private WebElement findYourRepByAddressButton;
@@ -50,8 +50,8 @@ public class HomePage {
         return imageRepresentative.isDisplayed();
     }
 
-    public boolean IsAtleastTwoRepresentativesFound() {
-        return atLeastTwoRepresentativesFound.isDisplayed();
+    public boolean isAtleastTwoRepresentativesFound() {
+        return moreThanOneRepresentativeFound.isDisplayed();
     }
 
     public boolean isFindYourRepButtonPresent(){
