@@ -18,6 +18,6 @@ public class FormatValidationTests extends UITestBase {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        Assert.assertTrue("true", directoryPage.checkPhoneFormatForSelectedState("state-alabama"));
+        Assert.assertTrue("true", directoryPage.isPhoneFormatForSelectedStateCorrect("state-alabama"));
     }
 }

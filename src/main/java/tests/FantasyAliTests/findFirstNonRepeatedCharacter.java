@@ -1,4 +1,4 @@
-package tests.formatTests;
+package tests.FantasyAliTests;
 
 public class findFirstNonRepeatedCharacter {
    public static String isFoundFirstRepeatingChar (String str){

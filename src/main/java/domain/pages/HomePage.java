@@ -46,11 +46,11 @@ public class HomePage {
         lookUpZipCodeButton.click();
     }
 
-    public boolean isRepPhotoDisplayed(){
+    public boolean shouldDisplayImageRep(){
         return imageRepresentative.isDisplayed();
     }
 
-    public boolean isAtleastTwoRepresentativesFound() {
+    public boolean shouldDisplayMoreThanOneRep() {
         return moreThanOneRepresentativeFound.isDisplayed();
     }
 
