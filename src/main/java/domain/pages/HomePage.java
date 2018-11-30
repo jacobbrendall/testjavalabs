@@ -15,7 +15,7 @@ public class HomePage {
         //*[@id="block-mainnavigation"]/ul/li[1]/a
         private static WebElement representativesLink;
 
-        @FindBy (xpath = "(//a[href='/committees'])")
+        @FindBy (css = "#block-mainnavigation > ul > li:nth-child(3) > a")
         private static WebElement committeesLink;
 
         public HomePage(WebDriver driver) {

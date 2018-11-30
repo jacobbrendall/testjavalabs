@@ -20,7 +20,7 @@ public class RepPageValidationTests {
             driver.get("https://www.house.gov");
             homePage.isHomePageZipCodeInputPresent();
             homePage.clickRepresentativesLink();
-           // System.out.println(representativesPage.isRepresentativesPageStateNameDisplayed());
+            System.out.println(representativesPage.isRepresentativesPageStateNameDisplayed());
             driver.close();
         }
     }
