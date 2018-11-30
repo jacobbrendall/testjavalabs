@@ -11,7 +11,8 @@ public class HomePage {
         @FindBy (xpath = "//input[@id='header-find-rep-zip-code']")
         private static WebElement homePageZipCodeInput;
 
-        @FindBy (xpath = "(//a[href='/representatives'])")
+        @FindBy (css = "#block-mainnavigation > ul > li:nth-child(1) > a")
+        //*[@id="block-mainnavigation"]/ul/li[1]/a
         private static WebElement representativesLink;
 
         @FindBy (xpath = "(//a[href='/committees'])")
