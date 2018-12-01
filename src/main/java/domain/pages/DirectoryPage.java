@@ -6,9 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class DirectoryPage {
     private WebDriver driver;
@@ -16,6 +23,9 @@ public class DirectoryPage {
     public final String partyXpath = "(//a[contains(text(),'Byrne, Bradley')])[1]/../following-sibling::td[1]";
     public List<WebElement> states;
     String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
+    String rowInfoXpathForAlabama = "//caption[@id='state-alabama']/../tbody/tr/td[5]";
+    String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
+    String rowsXpath = "//caption[@id='state-alabama']/../tbody/tr";
 
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
@@ -27,8 +37,9 @@ public class DirectoryPage {
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
 
-    @FindAll({@FindBy(xpath = "//caption[starts-with(@id,'state')]")})
+    @FindBys({@FindBy ( xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
+
 
 
     public DirectoryPage (WebDriver driver){
@@ -38,7 +49,7 @@ public class DirectoryPage {
     public boolean isDisplayedDirectoryOfRepresentativesText(){
         return directoryOfRepresentativesText.isDisplayed();
     }
-    public void clickListByStateandDistrict(){
+    public void clickListByStateAndDistrict(){
         listByStateandDistrictButton.click();
     }
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
@@ -53,19 +64,51 @@ public class DirectoryPage {
         return representativeNames;
     }
 
-    public String getPartyXpath(String xpathParty, String representativeName){
-        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText();
+    public String getParty(String xpathParty, String representativeName){
+        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText().trim();
     }
 
-    public char getPartyByRepresentative(String representativeName){
-        return getPartyXpath(partyXpathByName, representativeName).charAt(0);
+    public String getPartyByRepresentative(String representativeName){
+        return getParty(partyXpathByName, representativeName);
     }
 
     public List<String> getAllStates() {
-        List<String> allStatesArray = new ArrayList<String>();
-        for (WebElement allState:allStates){
-            allStatesArray.add(allState.getText());
+        List<String> allStatesList = new ArrayList<String>();
+        for (WebElement allState : allStates) {
+            allStatesList.add(allState.getText());
         }
-        return allStatesArray;
+        return allStatesList;
+    }
+
+    public List<String> getAllStatesStartingWithA(){
+        List <String> statesStartingWithA = getAllStates().stream().filter(s->s.startsWith("A")).collect(toList());
+        return statesStartingWithA;
+    }
+
+    public List<String> getSortedStates(){
+        List <String> sortedStates = getAllStates().stream().sorted().collect(toList());
+        return sortedStates;
+    }
+
+    public List<String> getRepInfoForState(String state){
+        List<WebElement> rowsAll = driver.findElements(By.xpath(rowsXpath));
+        WebElement rows = driver.findElement(By.xpath(String.format(rowInfoXpathForAlabama, state)));
+        List<String> phones = new ArrayList<String>();
+        for (WebElement e:rowsAll) {
+            phones.add(rows.getText());
+        }
+        return phones;
+    }
+
+    public boolean isPhoneFormatForSelectedStateCorrect(String state){
+        Pattern pattern = Pattern.compile(regex);
+        Boolean result = false;
+        for (String phone:getRepInfoForState(state)) {
+            Matcher matcher = pattern.matcher(phone);
+            if (matcher.matches()){
+                result = true;
+            }
+        }
+        return result;
     }
 }

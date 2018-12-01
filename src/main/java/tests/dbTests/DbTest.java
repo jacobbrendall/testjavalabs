@@ -1,4 +1,4 @@
-package tests;
+package tests.dbTests;
 
 
 import org.junit.BeforeClass;
