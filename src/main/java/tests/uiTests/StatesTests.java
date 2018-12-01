@@ -24,9 +24,8 @@ public class StatesTests extends UITestBase {
      */
     @Test
     public void AllStatesShouldSorted() {
-
         homePage.clickRepresentativesLink();
         directoryPage.clickListByStateAndDistrict();
-        Assert.assertEquals (allStatesExpected, directoryPage.getSortedStates().toString());
+        Assert.assertEquals (directoryPage.getSortedStates().toString(), allStatesExpected);
     }
 }
