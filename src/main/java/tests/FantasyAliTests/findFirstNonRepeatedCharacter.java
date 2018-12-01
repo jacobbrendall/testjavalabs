@@ -1,21 +1,21 @@
 package tests.FantasyAliTests;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class findFirstNonRepeatedCharacter {
    public static String isFoundFirstRepeatingChar (String str){
-       String result = " ";
-       int count = 0;
-       char [] strToArr = str.toLowerCase().toCharArray();
-       for(char chr:strToArr) {
-           for (int i = 1; i < str.length(); i++) {
-               if (chr != str.charAt(i)) {
-                   count = count + 1;
-               }
-           }
-           if (count == 0) {
-               result = "first unique character is " + Character.toString(chr);
+       Map<String, Integer> map = new LinkedHashMap<String, Integer>(str.length());
+        String result=" ";
+       for(char chr:str.toLowerCase().toCharArray()) {
+           map.put(Character.toString(chr), map.containsKey(Character.toString(chr))?map.get(Character.toString(chr))+1:1);
+       }
+       for(Map.Entry<String, Integer> e:map.entrySet()){
+           if(e.getValue()==1){
+               return e.getKey();
            }
        }
-       return result;
+       throw new RuntimeException("did not find");
    }
 
    public static void main (String [] args){
