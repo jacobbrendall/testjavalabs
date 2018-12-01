@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import static junit.framework.TestCase.assertTrue;
 
 public class ZipCodeTests extends UITestBase {
+
     /**
      * Call for enterZipCode method from Homepage.
      * Put zipcode as an argument.
@@ -20,14 +21,17 @@ public class ZipCodeTests extends UITestBase {
      */
     @Test
     public void singleRepSearchWithZipSearchShouldPass() {
-        homePage.enterZipCodeAndSubmit("92656");
-        Assert.assertTrue(homePage.isFindYourRepButtonPresent());
+        homePage.enterZipCodeAndSubmit("63367");
+        Assert.assertTrue(searchResultsPage.isRepImagePresent());
     }
 
+    //TODO consider using soft assertions
     @Test
-    public void singleRepSearchWithZipSearchShouldPass() {
+    public void multipleRepSearchWithZipSearchShouldPass() {
         homePage.enterZipCodeAndSubmit("92656");
-
+        Assert.assertTrue(searchResultsPage.isRepImagePresent());
+        Assert.assertTrue(searchResultsPage.isFindYourRepByAddressButtonPresent());
     }
+
 }
 
