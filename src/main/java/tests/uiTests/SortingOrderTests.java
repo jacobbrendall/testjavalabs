@@ -17,9 +17,7 @@ public class SortingOrderTests extends UITestBase {
      */
     @Test
     public void shouldListedByStateAndDistrict() {
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.clickListByStateAndDistrict();
         Assert.assertTrue(directoryPage.isAlabamaTextDisplayed());
 

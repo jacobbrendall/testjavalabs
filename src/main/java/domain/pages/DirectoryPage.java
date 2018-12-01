@@ -18,15 +18,14 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 public class DirectoryPage {
-    private WebDriver driver;
-    public String stateTextXpath = "//*[@id='%s']/..//td[2]";
-    public final String partyXpath = "(//a[contains(text(),'Byrne, Bradley')])[1]/../following-sibling::td[1]";
-    public List<WebElement> states;
-    String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
-    String rowInfoXpathForAlabama = "//caption[@id='state-alabama']/../tbody/tr/td[5]";
-    String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
-    String rowsXpath = "//caption[@id='state-alabama']/../tbody/tr";
 
+    private WebDriver driver;
+
+    private String stateTextXpath = "//*[@id='%s']/..//td[2]";
+    private String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
+    private String rowInfoXpathForAlabama = "//caption[@id='state-alabama']/../tbody/tr/td[5]";
+    private String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
+    private String rowsXpath = "//caption[@id='state-alabama']/../tbody/tr";
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
     private WebElement directoryOfRepresentativesText;
@@ -37,10 +36,8 @@ public class DirectoryPage {
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
 
-    @FindBys({@FindBy ( xpath = "//caption[starts-with(@id,'state')]")})
+    @FindBys({@FindBy (xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
-
-
 
     public DirectoryPage (WebDriver driver){
         this.driver = driver;
@@ -49,9 +46,11 @@ public class DirectoryPage {
     public boolean isDisplayedDirectoryOfRepresentativesText(){
         return directoryOfRepresentativesText.isDisplayed();
     }
+
     public void clickListByStateAndDistrict(){
         listByStateandDistrictButton.click();
     }
+
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
 
     public List<String> getAllRepresentativeNamesForSelectedState(String state){
@@ -64,20 +63,8 @@ public class DirectoryPage {
         return representativeNames;
     }
 
-    public String getParty(String xpathParty, String representativeName){
-        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText().trim();
-    }
-
     public String getPartyByRepresentative(String representativeName){
         return getParty(partyXpathByName, representativeName);
-    }
-
-    public List<String> getAllStates() {
-        List<String> allStatesList = new ArrayList<String>();
-        for (WebElement allState : allStates) {
-            allStatesList.add(allState.getText());
-        }
-        return allStatesList;
     }
 
     public List<String> getAllStatesStartingWithA(){
@@ -102,7 +89,7 @@ public class DirectoryPage {
 
     public boolean isPhoneFormatForSelectedStateCorrect(String state){
         Pattern pattern = Pattern.compile(regex);
-        Boolean result = false;
+        boolean result = false;
         for (String phone:getRepInfoForState(state)) {
             Matcher matcher = pattern.matcher(phone);
             if (matcher.matches()){
@@ -110,5 +97,17 @@ public class DirectoryPage {
             }
         }
         return result;
+    }
+
+    private String getParty(String xpathParty, String representativeName){
+        return driver.findElement(By.xpath(String.format(xpathParty, representativeName))).getText().trim();
+    }
+
+    private List<String> getAllStates() {
+        List<String> allStatesList = new ArrayList<String>();
+        for (WebElement allState : allStates) {
+            allStatesList.add(allState.getText());
+        }
+        return allStatesList;
     }
 }

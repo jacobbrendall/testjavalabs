@@ -22,9 +22,7 @@ public class RepresentativesTests extends UITestBase {
      */
     @Test
     public void allRepsNamesForSelectedStateShouldDisplayed(){
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.clickListByStateAndDistrict();
         Assert.assertEquals(result, directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").toString());
     }

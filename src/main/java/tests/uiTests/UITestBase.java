@@ -1,5 +1,6 @@
 package tests.uiTests;
 
+import domain.pages.DirectoryPage;
 import domain.pages.HomePage;
 import org.junit.After;
 import org.junit.Before;
@@ -14,13 +15,15 @@ public class UITestBase {
 
     public WebDriver driver;
 
+    HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+    DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
+
     @Before
     public void SystemSetUp(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://www.house.gov");
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-
     }
 
     @After

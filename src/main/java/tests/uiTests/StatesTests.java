@@ -11,7 +11,10 @@ import static junit.framework.TestCase.assertTrue;
 
 public class StatesTests extends UITestBase {
 
-    String allstates = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
+    //TODO this test fails
+
+    String allStatesExpected = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
+
     /**
      * Click representatives link.
      * List by state and district.
@@ -21,10 +24,9 @@ public class StatesTests extends UITestBase {
      */
     @Test
     public void AllStatesShouldSorted() {
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
+
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         directoryPage.clickListByStateAndDistrict();
-        Assert.assertEquals (allstates, directoryPage.getSortedStates().toString());
+        Assert.assertEquals (allStatesExpected, directoryPage.getSortedStates().toString());
     }
 }

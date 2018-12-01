@@ -17,9 +17,8 @@ public class ZipCodeTests extends UITestBase {
      * isFindYourRepButtonPresent.
      */
     @Test
-    public void FindYourRepButtonShouldAppearAfterEnteringZipCode(){
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
-    homePage.enterZipCodeAndSubmit("92656");
+    public void FindYourRepButtonShouldAppearAfterEnteringZipCode() {
+        homePage.enterZipCodeAndSubmit("92656");
         Assert.assertTrue(homePage.isFindYourRepButtonPresent());
     }
 }
