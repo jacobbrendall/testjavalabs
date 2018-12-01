@@ -13,7 +13,7 @@ public class StatesTests extends UITestBase {
 
     //TODO this test fails
 
-    String allStatesExpected = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
+    String allStates = "[Alabama, Alaska, American Samoa, Arizona, Arkansas]";
 
     /**
      * Click representatives link.
@@ -23,9 +23,9 @@ public class StatesTests extends UITestBase {
      * Check if expected and actual results match.
      */
     @Test
-    public void AllStatesShouldSorted() {
+    public void directoryShouldContainAllStates() {
         homePage.clickRepresentativesLink();
-        directoryPage.clickListByStateAndDistrict();
-        Assert.assertEquals (directoryPage.getSortedStates().toString(), allStatesExpected);
+        directoryPage.clickListByStateAndDistrictLink();
+        Assert.assertEquals (directoryPage.getSortedStates().toString(), allStates);
     }
 }

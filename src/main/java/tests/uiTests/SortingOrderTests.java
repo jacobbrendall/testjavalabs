@@ -18,7 +18,7 @@ public class SortingOrderTests extends UITestBase {
     @Test
     public void shouldListedByStateAndDistrict() {
         homePage.clickRepresentativesLink();
-        directoryPage.clickListByStateAndDistrict();
+        directoryPage.clickListByStateAndDistrictLink();
         Assert.assertTrue(directoryPage.isAlabamaTextDisplayed());
 
     }

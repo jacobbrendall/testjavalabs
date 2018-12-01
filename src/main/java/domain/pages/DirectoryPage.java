@@ -47,7 +47,7 @@ public class DirectoryPage {
         return directoryOfRepresentativesText.isDisplayed();
     }
 
-    public void clickListByStateAndDistrict(){
+    public void clickListByStateAndDistrictLink(){
         listByStateandDistrictButton.click();
     }
 

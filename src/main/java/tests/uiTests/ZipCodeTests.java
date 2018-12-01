@@ -15,11 +15,19 @@ public class ZipCodeTests extends UITestBase {
      * isRepPhotoDisplayed or
      * IsAtleastTwoRepresentativesFound
      * isFindYourRepButtonPresent.
+     * Assert find your rep txt is present
+     * Assert zip code is the same as entry
      */
     @Test
-    public void FindYourRepButtonShouldAppearAfterEnteringZipCode() {
+    public void singleRepSearchWithZipSearchShouldPass() {
         homePage.enterZipCodeAndSubmit("92656");
         Assert.assertTrue(homePage.isFindYourRepButtonPresent());
+    }
+
+    @Test
+    public void singleRepSearchWithZipSearchShouldPass() {
+        homePage.enterZipCodeAndSubmit("92656");
+
     }
 }
 
