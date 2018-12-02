@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class leadershipTests extends UITestBase{
     @Test
-    public void shouldDisplayLeadership(){
+    public void shouldDisplayRepublicanLeadership(){
         String actualResult = " ";
         String expectedResult = "Majority Leader\n"+
         "Rep. Kevin McCarthy\n"+
@@ -22,7 +22,7 @@ public class leadershipTests extends UITestBase{
         "Heads Conference forum for policy development.";
         LeadershipPage leadershipPage = new PageFactory().initElements(driver, LeadershipPage.class);
         leadershipPage.isLeadershipTitlePresent();
-        for(String e:leadershipPage.partyLeads()) {
+        for(String e:leadershipPage.isRepublicanLeadsDisplayed()) {
             actualResult = actualResult + e;
         }
         Assert.assertEquals(actualResult.trim(), expectedResult.trim());
