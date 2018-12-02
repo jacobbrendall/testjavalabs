@@ -9,6 +9,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HomePage {
+
+    WebDriver driver;
+
     Boolean result;
     String regex = "^[0-9]{5}(?:-[0-9]{4})?$";
 
@@ -27,14 +30,9 @@ public class HomePage {
     @FindBy(xpath = "//form[contains(text(), 'Enter a zip code:')]")
     private WebElement invalidZipCodeText;
 
-    @FindBy(xpath = "//img[@class='repPhoto']")
-    private WebElement imageRepresentative;
-
-    @FindBy(xpath = "(//img[@class='repPhoto'])[2]")
-    private WebElement moreThanOneRepresentativeFound;
-
-    @FindBy(xpath = "//input[@value='FIND YOUR REP BY ADDRESS']")
-    private WebElement findYourRepByAddressButton;
+    public HomePage (WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void clickRepresentativesLink() {
         representativesLink.click();
@@ -44,18 +42,6 @@ public class HomePage {
         inputZipCode.clear();
         inputZipCode.sendKeys(zipCode);
         lookUpZipCodeButton.click();
-    }
-
-    public boolean shouldDisplayImageRep(){
-        return imageRepresentative.isDisplayed();
-    }
-
-    public boolean shouldDisplayMoreThanOneRep() {
-        return moreThanOneRepresentativeFound.isDisplayed();
-    }
-
-    public boolean isFindYourRepButtonPresent(){
-         return findYourRepByAddressButton.isDisplayed();
     }
 
     public boolean isHomePageLogoDisplayed(){

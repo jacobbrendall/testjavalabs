@@ -1,9 +1,11 @@
 package domain.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SearchResultsPage {
+public class SearchResultsPage extends HomePage {
+
 
     @FindBy(xpath = "//form[contains(text(), 'Enter a zip code:')]")
     private WebElement invalidZipCodeText;
@@ -17,12 +19,21 @@ public class SearchResultsPage {
     @FindBy(xpath = "//input[@value='FIND YOUR REP BY ADDRESS']")
     private WebElement findYourRepByAddressButton;
 
+    public SearchResultsPage(WebDriver driver) {
+        super(driver);
+        // this.driver = driver;
+    }
+
     public boolean isFindYourRepByAddressButtonPresent() {
         return findYourRepByAddressButton.isDisplayed();
     }
 
     public boolean isRepImagePresent() {
-        return imageRepresentative.isDisplayed() || imageSecondRepresentative.isDisplayed();
+        try {
+            return imageRepresentative.isDisplayed() || imageSecondRepresentative.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

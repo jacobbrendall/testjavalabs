@@ -17,9 +17,7 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
-public class DirectoryPage {
-
-    private WebDriver driver;
+public class DirectoryPage extends HomePage {
 
     private String stateTextXpath = "//*[@id='%s']/..//td[2]";
     private String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
@@ -40,7 +38,7 @@ public class DirectoryPage {
     private List<WebElement> allStates;
 
     public DirectoryPage (WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
     public boolean isDisplayedDirectoryOfRepresentativesText(){
