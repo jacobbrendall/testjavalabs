@@ -16,7 +16,7 @@ public class ShouldCheckRepeatingCharactersInStates extends UITestBase {
         HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
         DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        directoryPage.clickListByStateAndDistrict();
+        directoryPage.clickListByStateAndDistrictLink();
 
 
         Map<String, String> repeatingChars = new HashMap<String, String>();

@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 
-public class LeadershipPage {
+public class LeadershipPage extends HomePage {
 
-    WebDriver driver;
+
 
 
 
@@ -28,7 +28,8 @@ public class LeadershipPage {
 
 
     public LeadershipPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
+        //this.driver = driver;
     }
 
     public boolean isLeadershipTitlePresent() {

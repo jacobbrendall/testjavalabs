@@ -16,10 +16,8 @@ public class PartyTests extends UITestBase {
      */
     @Test
     public void partyOfRepShouldDemonstrated(){
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        directoryPage.clickListByStateAndDistrict();
+        directoryPage.clickListByStateAndDistrictLink();
         Assert.assertEquals("D", directoryPage.getPartyByRepresentative("Grijalva"));
     }
 }

@@ -13,9 +13,7 @@ public class LandOnDirectoryPageTests extends UITestBase {
      */
     @Test
     public void directoryOfRepresentativesShouldDisplayed() {
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
         Assert.assertTrue(directoryPage.isDisplayedDirectoryOfRepresentativesText());
 
     }

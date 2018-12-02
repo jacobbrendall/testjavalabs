@@ -11,6 +11,10 @@ import static org.junit.Assert.assertEquals;
 public class RepresentativesTests extends UITestBase {
     String result = "[Byrne, Bradley, Roby, Martha, Rogers, Mike, Aderholt, Robert, Brooks, Mo, Palmer, Gary, Sewell, Terri A.]";
 
+    //TODO get the data of the first (top in the table) rep of ALABAMA
+// create object (firstAlambamaRep) from Representatives class
+    // set object values of that firstAlabamaRep.setName(driver.findElemeny)
+
     /**
      * Click representatives link
      * List by state and district
@@ -22,10 +26,8 @@ public class RepresentativesTests extends UITestBase {
      */
     @Test
     public void allRepsNamesForSelectedStateShouldDisplayed(){
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         homePage.clickRepresentativesLink();
-        DirectoryPage directoryPage = new PageFactory().initElements(driver, DirectoryPage.class);
-        directoryPage.clickListByStateAndDistrict();
+        directoryPage.clickListByStateAndDistrictLink();
         Assert.assertEquals(result, directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").toString());
     }
 }

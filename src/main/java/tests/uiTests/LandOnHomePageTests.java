@@ -11,7 +11,6 @@ public class LandOnHomePageTests extends UITestBase {
      */
     @Test
     public void homePageLogoShouldDisplayed(){
-        HomePage homePage = new PageFactory().initElements(driver, HomePage.class);
         Assert.assertTrue(homePage.isHomePageLogoDisplayed());
     }
 }
