@@ -1,13 +1,16 @@
 package domain.pages;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import domain.Pojos.Representatives;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +23,10 @@ import static java.util.stream.Collectors.toList;
 public class DirectoryPage extends HomePage {
 
     private String stateTextXpath = "//*[@id='%s']/..//td[2]";
+    private String districtXpath = "//*[@id='%s']/..//td[1]";
+    private String partyXpath = "//*[@id='%s']/..//td[3]";
+    private String officeRoomXpath = "//*[@id='%s']/..//td[4]";
+    //caption[@id='state-alabama']/..//tbody/tr[1]/td[4]
     private String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
     private String rowInfoXpathForAlabama = "//caption[@id='state-alabama']/../tbody/tr/td[5]";
     private String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
@@ -60,6 +67,44 @@ public class DirectoryPage extends HomePage {
         }
         return representativeNames;
     }
+
+    public List<String> getDistrictsForSelectedState(String state){
+        String districtXpathFormatted = String.format(districtXpath, state);
+        List<String> districtNames = new ArrayList<String>();
+        List<WebElement> districts = driver.findElements(By.xpath(districtXpathFormatted));
+        for (WebElement district : districts) {
+            districtNames.add(district.getText());
+        }
+        return districtNames;
+    }
+
+    public List<String> getPartysForSelectedState(String state){
+        String partyXpathFormatted = String.format(partyXpath, state);
+        List<String> partyNames = new ArrayList<String>();
+        List<WebElement> partys = driver.findElements(By.xpath(partyXpathFormatted));
+        for (WebElement  party : partys) {
+            partyNames.add(party.getText());
+        }
+        return partyNames;
+    }
+
+    public List<String> getRepsOfficeRooms(String state){
+        String officeRoomXpathFormatted = String.format(officeRoomXpath, state);
+        List<String> officeRooms = new ArrayList<String>();
+        List<WebElement> offices = driver.findElements(By.xpath(officeRoomXpathFormatted));
+        for (WebElement  office : offices) {
+            officeRooms.add(office.getText());
+        }
+        return officeRooms;
+    }
+
+    public String repInfoToJson(Representatives obj) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        String json = mapper.writeValueAsString(obj);
+        return json;
+    }
+
 
     public String getPartyByRepresentative(String representativeName){
         return getParty(partyXpathByName, representativeName);

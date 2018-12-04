@@ -5,7 +5,8 @@ public class Representatives {
     private String state;
     private String name;
     private String district;
-    private char party;
+    private String party;
+    private String officeRoom;
 
     public String getState() {
         return state;
@@ -31,11 +32,17 @@ public class Representatives {
         this.district = district;
     }
 
-    public char getParty() {
+    public String getParty() {
         return party;
     }
 
-    public void setParty(char party) {
+    public void setParty(String party) {
         this.party = party;
+    }
+
+    public String getOfficeRoom(){return officeRoom;}
+
+    public void setOfficeRoom(String officeRoom) {
+        this.officeRoom = officeRoom;
     }
 }
