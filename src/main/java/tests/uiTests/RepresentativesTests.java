@@ -38,7 +38,7 @@ public class RepresentativesTests extends UITestBase {
      * Check if actual and expected matches
      */
     @Test
-    public void allRepsNamesForSelectedStateShouldDisplayed(){
+    public void allRepsNamesForSelectedStateShouldDisplayed() {
         homePage.clickRepresentativesLink();
         directoryPage.clickListByStateAndDistrictLink();
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -71,21 +71,22 @@ public class RepresentativesTests extends UITestBase {
                 "  \"district\" : \"1st\",\n" +
                 "  \"party\" : \"R\",\n" +
                 "  \"officeRoom\" : \"119 CHOB\"\n" +
-                "}",directoryPage.repInfoToJson(firstAlabamaRep));
+                "}", directoryPage.repInfoToJson(firstAlabamaRep));
     }
+
 
     @Test
     public void firstAndSecondAlabamaRepresentative() throws JsonProcessingException {
         homePage.clickRepresentativesLink();
         directoryPage.clickListByStateAndDistrictLink();
-        PojoRepList firstAlabamaRep = new PojoRepList();
-        for (int i =0; i<2; i++) {
-            firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama"));
-            firstAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama"));
-            firstAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama"));
-            firstAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama"));
-            firstAlabamaRep.setState("alabama");
-        }
+        PojoRepList allAlabamaReps = new PojoRepList();
+
+        allAlabamaReps.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama"));
+        allAlabamaReps.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama"));
+        allAlabamaReps.setParty(directoryPage.getPartysForSelectedState("state-alabama"));
+        allAlabamaReps.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama"));
+        allAlabamaReps.setState("alabama");
+
         Assert.assertEquals("{\n" +
                 "  \"state\" : \"alabama\",\n" +
                 "  \"name\" : [ \"Byrne, Bradley\", \"Roby, Martha\", \"Rogers, Mike\", \"Aderholt, Robert\", \"Brooks, Mo\", \"Palmer, Gary\", \"Sewell, Terri A.\" ],\n" +
@@ -94,6 +95,9 @@ public class RepresentativesTests extends UITestBase {
                 "  \"officeRoom\" : [ \"119 CHOB\", \"442 CHOB\", \"2184 RHOB\", \"235 CHOB\", \"2400 RHOB\", \"330 CHOB\", \"2201 RHOB\" ],\n" +
                 "  \"phone\" : null,\n" +
                 "  \"committee_assignment\" : null\n" +
-                "}", directoryPage.repInfoToJson(firstAlabamaRep));
+                "}", directoryPage.repInfoToJson(allAlabamaReps));
+
+        System.out.println(directoryPage.repInfoToJson(allAlabamaReps));
     }
 }
+
