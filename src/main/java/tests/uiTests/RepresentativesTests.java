@@ -12,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.PageFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.beans.BeanUtils;
 
 
 import java.io.File;
@@ -73,10 +74,24 @@ public class RepresentativesTests extends UITestBase {
     }
 
     @Test
-    public void firstAndSecondAlabamaRepresentative(){
+    public void firstAndSecondAlabamaRepresentative() throws JsonProcessingException {
         homePage.clickRepresentativesLink();
         directoryPage.clickListByStateAndDistrictLink();
         Representatives firstAlabamaRep = new Representatives();
-        firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(1));
+        firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(0) + ", " + directoryPage.getDistrictsForSelectedState("state-alabama").get(1));
+        firstAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(0) +  ", " + directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(1));
+        firstAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama").get(0) + ", " +  directoryPage.getPartysForSelectedState("state-alabama").get(1));
+        firstAlabamaRep.setState("alabama");
+        firstAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama").get(0) +  ", " + directoryPage.getRepsOfficeRooms("state-alabama").get(1));
+        /*homePage.clickRepresentativesLink();
+        directoryPage.clickListByStateAndDistrictLink();
+        Representatives secondAlabamaRep = new Representatives();
+        secondAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(1));
+        secondAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(1));
+        secondAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama").get(1));
+        secondAlabamaRep.setState("alabama");
+        secondAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama").get(1));
+        //BeanUtils.copyProperties(secondAlabamaRep, firstAlabamaRep);*/
+        System.out.println(directoryPage.repInfoToJson(firstAlabamaRep));
     }
 }

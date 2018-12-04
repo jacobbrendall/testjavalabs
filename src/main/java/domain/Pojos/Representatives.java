@@ -7,6 +7,8 @@ public class Representatives {
     private String district;
     private String party;
     private String officeRoom;
+    private String phone;
+    private String committee_assignment;
 
     public String getState() {
         return state;
@@ -44,5 +46,21 @@ public class Representatives {
 
     public void setOfficeRoom(String officeRoom) {
         this.officeRoom = officeRoom;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCommittee_assignment() {
+        return committee_assignment;
+    }
+
+    public void setCommittee_assignment(String committee_assignment) {
+        this.committee_assignment = committee_assignment;
     }
 }

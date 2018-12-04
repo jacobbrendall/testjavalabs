@@ -26,11 +26,11 @@ public class DirectoryPage extends HomePage {
     private String districtXpath = "//*[@id='%s']/..//td[1]";
     private String partyXpath = "//*[@id='%s']/..//td[3]";
     private String officeRoomXpath = "//*[@id='%s']/..//td[4]";
-    //caption[@id='state-alabama']/..//tbody/tr[1]/td[4]
     private String partyXpathByName = "(//a[contains(text(), '%s')])[1]/../following-sibling::td[1]";
     private String rowInfoXpathForAlabama = "//caption[@id='state-alabama']/../tbody/tr/td[5]";
     private String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
     private String rowsXpath = "//caption[@id='state-alabama']/../tbody/tr";
+    private String rowXpathForFirstState = "(//table[@class='table'])[1]/tbody/tr";
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
     private WebElement directoryOfRepresentativesText;
@@ -40,6 +40,9 @@ public class DirectoryPage extends HomePage {
 
     @FindBy (xpath = "//caption[@id='state-alabama']")
     private WebElement alabamaText;
+
+    @FindBys ({@FindBy (xpath = "(//table[@class='table'])[1]/tbody/tr)")})
+    private List<WebElement> firstStateRows;
 
     @FindBys({@FindBy (xpath = "//caption[starts-with(@id,'state')]")})
     private List<WebElement> allStates;
@@ -57,6 +60,7 @@ public class DirectoryPage extends HomePage {
     }
 
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
+
 
     public List<String> getAllRepresentativeNamesForSelectedState(String state){
         String stateXpath = String.format(stateTextXpath, state);
