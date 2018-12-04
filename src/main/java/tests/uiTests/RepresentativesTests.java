@@ -1,6 +1,7 @@
 package tests.uiTests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import domain.Pojos.PojoRepList;
 import domain.Pojos.Representatives;
 import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.apache.commons.io.FileUtils;
@@ -77,21 +78,22 @@ public class RepresentativesTests extends UITestBase {
     public void firstAndSecondAlabamaRepresentative() throws JsonProcessingException {
         homePage.clickRepresentativesLink();
         directoryPage.clickListByStateAndDistrictLink();
-        Representatives firstAlabamaRep = new Representatives();
-        firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(0) + ", " + directoryPage.getDistrictsForSelectedState("state-alabama").get(1));
-        firstAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(0) +  ", " + directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(1));
-        firstAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama").get(0) + ", " +  directoryPage.getPartysForSelectedState("state-alabama").get(1));
-        firstAlabamaRep.setState("alabama");
-        firstAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama").get(0) +  ", " + directoryPage.getRepsOfficeRooms("state-alabama").get(1));
-        /*homePage.clickRepresentativesLink();
-        directoryPage.clickListByStateAndDistrictLink();
-        Representatives secondAlabamaRep = new Representatives();
-        secondAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(1));
-        secondAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(1));
-        secondAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama").get(1));
-        secondAlabamaRep.setState("alabama");
-        secondAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama").get(1));
-        //BeanUtils.copyProperties(secondAlabamaRep, firstAlabamaRep);*/
-        System.out.println(directoryPage.repInfoToJson(firstAlabamaRep));
+        PojoRepList firstAlabamaRep = new PojoRepList();
+        for (int i =0; i<2; i++) {
+            firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama"));
+            firstAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama"));
+            firstAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama"));
+            firstAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama"));
+            firstAlabamaRep.setState("alabama");
+        }
+        Assert.assertEquals("{\n" +
+                "  \"state\" : \"alabama\",\n" +
+                "  \"name\" : [ \"Byrne, Bradley\", \"Roby, Martha\", \"Rogers, Mike\", \"Aderholt, Robert\", \"Brooks, Mo\", \"Palmer, Gary\", \"Sewell, Terri A.\" ],\n" +
+                "  \"district\" : [ \"1st\", \"2nd\", \"3rd\", \"4th\", \"5th\", \"6th\", \"7th\" ],\n" +
+                "  \"party\" : [ \"R\", \"R\", \"R\", \"R\", \"R\", \"R\", \"D\" ],\n" +
+                "  \"officeRoom\" : [ \"119 CHOB\", \"442 CHOB\", \"2184 RHOB\", \"235 CHOB\", \"2400 RHOB\", \"330 CHOB\", \"2201 RHOB\" ],\n" +
+                "  \"phone\" : null,\n" +
+                "  \"committee_assignment\" : null\n" +
+                "}", directoryPage.repInfoToJson(firstAlabamaRep));
     }
 }

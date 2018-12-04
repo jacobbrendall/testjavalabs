@@ -2,21 +2,18 @@ package domain.pages;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import domain.Pojos.Representatives;
+import domain.Pojos.PojoRepList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -102,7 +99,7 @@ public class DirectoryPage extends HomePage {
         return officeRooms;
     }
 
-    public String repInfoToJson(Representatives obj) throws JsonProcessingException {
+    public String repInfoToJson(Object obj) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         String json = mapper.writeValueAsString(obj);
