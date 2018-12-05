@@ -33,10 +33,15 @@ public class SerializationTests {
         alabamaState.setState("Alabama");
         alabamaState.setReps(listAlabamaReps);
 
-        //serialize with Gson
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(alabamaState));
+       serializeWithGson(alabamaState);
+
     }
 
+    private void serializeWithGson(Object obj) {
+        new Gson().toJson(obj);
+    }
 
+    private void serializerWithJackson() {
+        
+    }
 }
