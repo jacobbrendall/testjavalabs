@@ -137,7 +137,7 @@ public class DirectoryPage extends HomePage {
     }
 
     public List<String> getFirstRepInfoForState(String lineNum ){
-        List<WebElement> rowsAll = driver.findElements(By.xpath(String.format(repRow, lineNum)));
+        List<WebElement> rowsAll = driver.findElements(By.xpath(String.format(repRowXpath, lineNum)));
         List<String> repInfo = new ArrayList<>();
         for (WebElement e:rowsAll) {
             repInfo.add(e.getText());
