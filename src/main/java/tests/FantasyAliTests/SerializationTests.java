@@ -27,7 +27,7 @@ public class SerializationTests {
         repAlabama2.setName("R");
         //make a list fo alabamaReps
         listAlabamaReps.add(repAlabama1);
-        listAlabamaReps.add(repAlabama1);
+        listAlabamaReps.add(repAlabama2);
 
         // fill alabamaState info
         alabamaState.setState("Alabama");
