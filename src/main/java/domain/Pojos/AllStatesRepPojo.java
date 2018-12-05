@@ -7,6 +7,10 @@ public class AllStatesRepPojo {
     private String state;
     private List<Representatives> repsList;
 
+    public AllStatesRepPojo(List<Representatives> repsList){
+        this.repsList = repsList;
+    }
+
     public String getState() {
         return state;
     }
@@ -21,5 +25,10 @@ public class AllStatesRepPojo {
 
     public void setRepsList(List<Representatives> repsList) {
         this.repsList = repsList;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{state:%s}", state);
     }
 }

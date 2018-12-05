@@ -2,6 +2,7 @@ package domain.pages;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import domain.Pojos.PojoRepList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -61,9 +62,7 @@ public class DirectoryPage extends HomePage {
 
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
 
-   // public List<Object> getAllRepsInfoForSelectedState (){
 
-   // }
     public List<String> getAllRepresentativeNamesForSelectedState(String state){
         String stateXpath = String.format(stateTextXpath, state);
         List<String> representativeNames = new ArrayList<String>();
@@ -104,11 +103,10 @@ public class DirectoryPage extends HomePage {
         return officeRooms;
     }
 
-    public String repInfoToJson(Object obj) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        String json = mapper.writeValueAsString(obj);
-        return json;
+    public String serializeRepInfoWithJackson(Object obj) throws JsonProcessingException {
+        ObjectWriter mapper = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        //mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        return mapper.writeValueAsString(obj);
     }
 
 

@@ -27,6 +27,7 @@ public class UITestBase {
         options.addArguments("--headless","--disable-gpu");
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.get("https://www.house.gov");
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
         homePage = new PageFactory().initElements(driver, HomePage.class);

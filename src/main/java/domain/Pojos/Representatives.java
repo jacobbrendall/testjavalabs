@@ -2,7 +2,7 @@ package domain.Pojos;
 
 public class Representatives {
 
-    private String state;
+    //private String state;
     private String name;
     private String district;
     private String party;
@@ -10,18 +10,31 @@ public class Representatives {
     private String phone;
     private String committee_assignment;
 
-    @Override
-    public String toString(){
-        return state + " " + name + " " + district + " " + party + " " + officeRoom + " " + phone + " " + committee_assignment;
+    public Representatives(){
+
     }
 
-    public String getState() {
+    public Representatives (String name, String district, String party, String officeRoom, String phone, String committee_assignment){
+        this.name = name;
+        this.district = district;
+        this.party = party;
+        this.officeRoom = officeRoom;
+        this.phone = phone;
+        this.committee_assignment = committee_assignment;
+    }
+
+    @Override
+    public String toString(){
+        return name + " " + district + " " + party + " " + officeRoom + " " + phone + " " + committee_assignment;
+    }
+
+    /*public String getState() {
         return state;
     }
 
     public void setState(String state) {
         this.state = state;
-    }
+    }*/
 
     public String getName() {
         return name;

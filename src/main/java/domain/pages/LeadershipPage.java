@@ -13,9 +13,19 @@ import static java.util.stream.Collectors.toMap;
 
 public class LeadershipPage extends HomePage {
 
+    public String expectedResult = "[Majority Leader\n"+
+            "Rep. Kevin McCarthy\n"+
+            "Represents Republicans on the House floor., Majority Whip\n" +
+            "Rep. Steve Scalise\n"+
+            "Assists leadership in managing party's legislative program., Republican Conference Chairman\n"+
+            "Rep. Cathy McMorris Rodgers\n"+
+            "Heads organization of all Republican Party members in the House., Republican Policy Committee Chairman\n" +
+            "Rep. Luke Messer\n"+
+            "Heads Conference forum for policy development.]";
 
 
-
+    @FindBys ({@FindBy(xpath = "(//div[@class='row'])[4]/div[1]/p")})
+    private List<WebElement> republicanReps;
 
     @FindBy(xpath = "//h1[@class='page-header']")
     private WebElement leadershipTitle;
@@ -29,7 +39,6 @@ public class LeadershipPage extends HomePage {
 
     public LeadershipPage(WebDriver driver){
         super(driver);
-        //this.driver = driver;
     }
 
     public boolean isLeadershipTitlePresent() {
@@ -40,9 +49,8 @@ public class LeadershipPage extends HomePage {
 
     public List<String> isRepublicanLeadsDisplayed() {
         List<String> leadReps = new ArrayList<String>();
-        for (int i = 1; i < 5; i++) {
-            String xpathValue = "(//div[@class='row'])[4]/div[1]/p[" + i + "]";
-            leadReps.add(driver.findElement(By.xpath(xpathValue)).getText());
+        for (WebElement r:republicanReps){
+            leadReps.add(r.getText());
         }
         return leadReps;
     }

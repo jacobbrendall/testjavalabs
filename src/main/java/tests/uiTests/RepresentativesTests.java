@@ -27,9 +27,6 @@ import static org.junit.Assert.assertEquals;
 public class RepresentativesTests extends UITestBase {
     String result = "[Byrne, Bradley, Roby, Martha, Rogers, Mike, Aderholt, Robert, Brooks, Mo, Palmer, Gary, Sewell, Terri A.]";
 
-    //TODO get the data of the first (top in the table) rep of ALABAMA
-// create object (firstAlambamaRep) from Representatives class
-    // set object values of that firstAlabamaRep.setName(driver.findElemeny)
 
     /**
      * Click representatives link
@@ -61,12 +58,12 @@ public class RepresentativesTests extends UITestBase {
         firstAlabamaRep.setDistrict(directoryPage.getDistrictsForSelectedState("state-alabama").get(0));
         firstAlabamaRep.setName(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama").get(0));
         firstAlabamaRep.setParty(directoryPage.getPartysForSelectedState("state-alabama").get(0));
-        firstAlabamaRep.setState("alabama");
+        //firstAlabamaRep.setState("alabama");
         firstAlabamaRep.setOfficeRoom(directoryPage.getRepsOfficeRooms("state-alabama").get(0));
         Assert.assertEquals("Byrne, Bradley", firstAlabamaRep.getName());
         Assert.assertEquals("R", firstAlabamaRep.getParty());
         Assert.assertEquals("1st", firstAlabamaRep.getDistrict());
-        Assert.assertEquals("alabama", firstAlabamaRep.getState());
+        //Assert.assertEquals("alabama", firstAlabamaRep.getState());
         Assert.assertEquals("119 CHOB", firstAlabamaRep.getOfficeRoom());
         Assert.assertEquals("{\n" +
                 "  \"state\" : \"alabama\",\n" +
@@ -74,7 +71,7 @@ public class RepresentativesTests extends UITestBase {
                 "  \"district\" : \"1st\",\n" +
                 "  \"party\" : \"R\",\n" +
                 "  \"officeRoom\" : \"119 CHOB\"\n" +
-                "}", directoryPage.repInfoToJson(firstAlabamaRep));
+                "}", directoryPage.serializeRepInfoWithJackson(firstAlabamaRep));
     }
 
 
@@ -98,7 +95,7 @@ public class RepresentativesTests extends UITestBase {
                 "  \"officeRoom\" : [ \"119 CHOB\", \"442 CHOB\", \"2184 RHOB\", \"235 CHOB\", \"2400 RHOB\", \"330 CHOB\", \"2201 RHOB\" ],\n" +
                 "  \"phone\" : null,\n" +
                 "  \"committee_assignment\" : null\n" +
-                "}", directoryPage.repInfoToJson(allAlabamaReps));
+                "}", directoryPage.serializeRepInfoWithJackson(allAlabamaReps));
 
         System.out.println(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama"));
     }
@@ -109,44 +106,42 @@ public class RepresentativesTests extends UITestBase {
         directoryPage.clickListByStateAndDistrictLink();
         Representatives firstAlabamaRep = new Representatives();
         Representatives secondAlabamaRep = new Representatives();
-        firstAlabamaRep.setState("Alabama");
+        //firstAlabamaRep.setState("Alabama");
         firstAlabamaRep.setDistrict("1st");
         firstAlabamaRep.setName("Jacob");
         firstAlabamaRep.setOfficeRoom("119 CHOB");
         firstAlabamaRep.setParty("R");
         firstAlabamaRep.setPhone("111222333");
-        secondAlabamaRep.setState("Alabama");
+        //secondAlabamaRep.setState("Alabama");
         secondAlabamaRep.setDistrict("12nd");
         secondAlabamaRep.setName("Gox");
         secondAlabamaRep.setOfficeRoom("212 CHOB");
         secondAlabamaRep.setParty("D");
         secondAlabamaRep.setPhone("222111444");
-        List alabamaRepsList = new ArrayList<>();
+        List<Representatives> alabamaRepsList = new ArrayList<Representatives>();
         alabamaRepsList.add(firstAlabamaRep);
         alabamaRepsList.add(secondAlabamaRep);
-        AllStatesRepPojo allStatesRepPojo = new AllStatesRepPojo();
-        allStatesRepPojo.setRepsList(alabamaRepsList);
-        String result = " ";
-        for(Object o:alabamaRepsList) {
-            result = result + directoryPage.repInfoToJson(o);
-        }
-        Assert.assertEquals(" {\n" +
+        AllStatesRepPojo allStatesRepPojo = new AllStatesRepPojo(alabamaRepsList);
+        allStatesRepPojo.setState("Alabama");
+        System.out.println(directoryPage.serializeRepInfoWithJackson(allStatesRepPojo));
+        Assert.assertEquals("{\n" +
                 "  \"state\" : \"Alabama\",\n" +
-                "  \"name\" : \"Jacob\",\n" +
-                "  \"district\" : \"1st\",\n" +
-                "  \"party\" : \"R\",\n" +
-                "  \"officeRoom\" : \"119 CHOB\",\n" +
-                "  \"phone\" : \"111222333\",\n" +
-                "  \"committee_assignment\" : null\n" +
-                "}{\n" +
-                "  \"state\" : \"Alabama\",\n" +
-                "  \"name\" : \"Gox\",\n" +
-                "  \"district\" : \"12nd\",\n" +
-                "  \"party\" : \"D\",\n" +
-                "  \"officeRoom\" : \"212 CHOB\",\n" +
-                "  \"phone\" : \"222111444\",\n" +
-                "  \"committee_assignment\" : null\n" +
-                "}", result);
+                "  \"repsList\" : [ {\n" +
+                "    \"name\" : \"Jacob\",\n" +
+                "    \"district\" : \"1st\",\n" +
+                "    \"party\" : \"R\",\n" +
+                "    \"officeRoom\" : \"119 CHOB\",\n" +
+                "    \"phone\" : \"111222333\",\n" +
+                "    \"committee_assignment\" : null\n" +
+                "  }, {\n" +
+                "    \"name\" : \"Gox\",\n" +
+                "    \"district\" : \"12nd\",\n" +
+                "    \"party\" : \"D\",\n" +
+                "    \"officeRoom\" : \"212 CHOB\",\n" +
+                "    \"phone\" : \"222111444\",\n" +
+                "    \"committee_assignment\" : null\n" +
+                "  } ]\n" +
+                "}", directoryPage.serializeRepInfoWithJackson(allStatesRepPojo));
     }
 }
 
