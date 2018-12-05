@@ -1,6 +1,7 @@
 package tests.uiTests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import domain.Pojos.AllStatesRepPojo;
 import domain.Pojos.PojoRepList;
 import domain.Pojos.Representatives;
 import org.apache.commons.collections.bag.SynchronizedSortedBag;
@@ -18,6 +19,8 @@ import org.springframework.beans.BeanUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -97,7 +100,53 @@ public class RepresentativesTests extends UITestBase {
                 "  \"committee_assignment\" : null\n" +
                 "}", directoryPage.repInfoToJson(allAlabamaReps));
 
-        System.out.println(directoryPage.repInfoToJson(allAlabamaReps));
+        System.out.println(directoryPage.getAllRepresentativeNamesForSelectedState("state-alabama"));
+    }
+
+    @Test
+    public void alabamaRepsInfoShouldSerialized() throws JsonProcessingException {
+        homePage.clickRepresentativesLink();
+        directoryPage.clickListByStateAndDistrictLink();
+        Representatives firstAlabamaRep = new Representatives();
+        Representatives secondAlabamaRep = new Representatives();
+        firstAlabamaRep.setState("Alabama");
+        firstAlabamaRep.setDistrict("1st");
+        firstAlabamaRep.setName("Jacob");
+        firstAlabamaRep.setOfficeRoom("119 CHOB");
+        firstAlabamaRep.setParty("R");
+        firstAlabamaRep.setPhone("111222333");
+        secondAlabamaRep.setState("Alabama");
+        secondAlabamaRep.setDistrict("12nd");
+        secondAlabamaRep.setName("Gox");
+        secondAlabamaRep.setOfficeRoom("212 CHOB");
+        secondAlabamaRep.setParty("D");
+        secondAlabamaRep.setPhone("222111444");
+        List alabamaRepsList = new ArrayList<>();
+        alabamaRepsList.add(firstAlabamaRep);
+        alabamaRepsList.add(secondAlabamaRep);
+        AllStatesRepPojo allStatesRepPojo = new AllStatesRepPojo();
+        allStatesRepPojo.setRepsList(alabamaRepsList);
+        String result = " ";
+        for(Object o:alabamaRepsList) {
+            result = result + directoryPage.repInfoToJson(o);
+        }
+        Assert.assertEquals(" {\n" +
+                "  \"state\" : \"Alabama\",\n" +
+                "  \"name\" : \"Jacob\",\n" +
+                "  \"district\" : \"1st\",\n" +
+                "  \"party\" : \"R\",\n" +
+                "  \"officeRoom\" : \"119 CHOB\",\n" +
+                "  \"phone\" : \"111222333\",\n" +
+                "  \"committee_assignment\" : null\n" +
+                "}{\n" +
+                "  \"state\" : \"Alabama\",\n" +
+                "  \"name\" : \"Gox\",\n" +
+                "  \"district\" : \"12nd\",\n" +
+                "  \"party\" : \"D\",\n" +
+                "  \"officeRoom\" : \"212 CHOB\",\n" +
+                "  \"phone\" : \"222111444\",\n" +
+                "  \"committee_assignment\" : null\n" +
+                "}", result);
     }
 }
 

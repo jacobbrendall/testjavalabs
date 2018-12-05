@@ -11,7 +11,9 @@ import org.openqa.selenium.support.FindBys;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +30,7 @@ public class DirectoryPage extends HomePage {
     private String regex = "^[(][0-9]{3}[)][' '][0-9]{3}[-][0-9]{4}$";
     private String rowsXpath = "//caption[@id='state-alabama']/../tbody/tr";
     private String rowXpathForFirstState = "(//table[@class='table'])[1]/tbody/tr";
+    private String repRowXpath = "//caption[@id='state-alabama']/../tbody/tr";
 
     @FindBy(xpath =  "//h1[contains (text(), 'Directory of Representatives')]")
     private WebElement directoryOfRepresentativesText;
@@ -58,7 +61,9 @@ public class DirectoryPage extends HomePage {
 
     public boolean isAlabamaTextDisplayed(){ return alabamaText.isDisplayed();}
 
+   // public List<Object> getAllRepsInfoForSelectedState (){
 
+   // }
     public List<String> getAllRepresentativeNamesForSelectedState(String state){
         String stateXpath = String.format(stateTextXpath, state);
         List<String> representativeNames = new ArrayList<String>();
@@ -121,7 +126,7 @@ public class DirectoryPage extends HomePage {
         return sortedStates;
     }
 
-    public List<String> getRepInfoForState(String state){
+    public List<String> getRepPhoneInfoForState(String state){
         List<WebElement> rowsAll = driver.findElements(By.xpath(rowsXpath));
         WebElement rows = driver.findElement(By.xpath(String.format(rowInfoXpathForAlabama, state)));
         List<String> phones = new ArrayList<String>();
@@ -131,10 +136,19 @@ public class DirectoryPage extends HomePage {
         return phones;
     }
 
+    public List<String> getFirstRepInfoForState(String lineNum ){
+        List<WebElement> rowsAll = driver.findElements(By.xpath(String.format(repRow, lineNum)));
+        List<String> repInfo = new ArrayList<>();
+        for (WebElement e:rowsAll) {
+            repInfo.add(e.getText());
+        }
+        return repInfo;
+    }
+
     public boolean isPhoneFormatForSelectedStateCorrect(String state){
         Pattern pattern = Pattern.compile(regex);
         boolean result = false;
-        for (String phone:getRepInfoForState(state)) {
+        for (String phone:getRepPhoneInfoForState(state)) {
             Matcher matcher = pattern.matcher(phone);
             if (matcher.matches()){
                 result = true;

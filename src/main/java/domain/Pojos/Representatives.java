@@ -10,6 +10,11 @@ public class Representatives {
     private String phone;
     private String committee_assignment;
 
+    @Override
+    public String toString(){
+        return state + " " + name + " " + district + " " + party + " " + officeRoom + " " + phone + " " + committee_assignment;
+    }
+
     public String getState() {
         return state;
     }
@@ -63,4 +68,5 @@ public class Representatives {
     public void setCommittee_assignment(String committee_assignment) {
         this.committee_assignment = committee_assignment;
     }
+
 }
