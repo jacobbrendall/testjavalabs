@@ -1,9 +1,11 @@
 package tests.FantasyAliTests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
 import domain.Pojos.PojoAllState;
 import domain.Pojos.PojoReps;
-import domain.Pojos.Representatives;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class SerializationTests {
         repAlabama1.setParty("D");
         //fill repAlabama2 info
         repAlabama2.setName("Jane");
-        repAlabama2.setName("R");
+        repAlabama2.setParty("R");
         //make a list fo alabamaReps
         listAlabamaReps.add(repAlabama1);
         listAlabamaReps.add(repAlabama2);
@@ -33,15 +35,23 @@ public class SerializationTests {
         alabamaState.setState("Alabama");
         alabamaState.setReps(listAlabamaReps);
 
-       serializeWithGson(alabamaState);
+        System.out.println(serializeWithGson(alabamaState));
 
+        System.out.println(serializeWithJackson(alabamaState));
     }
 
-    private void serializeWithGson(Object obj) {
-        new Gson().toJson(obj);
+    private String serializeWithGson(Object obj) {
+        return new Gson().toJson(obj);
     }
 
-    private void serializerWithJackson() {
-        
+    private String serializeWithJackson(Object obj) {
+        ObjectMapper mapper = new ObjectMapper();
+        //mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            return mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
