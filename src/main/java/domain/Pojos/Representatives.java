@@ -82,4 +82,6 @@ public class Representatives {
         this.committee_assignment = committee_assignment;
     }
 
+
+
 }
